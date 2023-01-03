@@ -2,6 +2,9 @@ import { Route, BrowserRouter, Routes  } from "react-router-dom";
 
 import Home from "./pages/Home"
 import MobileApp from "./layouts/MobileApp";
+import SignIn from "./pages/Authentication/SignIn";
+
+
 import NotFound from "./pages/NotFound";
 
 
@@ -16,6 +19,7 @@ const App = () => {
       <Routes>
         {/* Home page */}
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/sign-in" element={<SignIn />} />
 
 
         <Route path="/download-mobile" element={<MobileApp />} />
