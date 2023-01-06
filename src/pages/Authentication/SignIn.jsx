@@ -1,4 +1,5 @@
-
+import Google from "../../components/Google"
+import Facebook from "../../components/Facebook"
 const SignIn = () => {
   return (
     <section class="relative py-0 bg-white lg:py-20">
@@ -43,6 +44,8 @@ const SignIn = () => {
                             </div>
 
                             <div className="flex items-center justify-center">
+                                <Google informParent={"informParent=sdfssdfg"} />
+                                <Facebook informParent={"informParent=sdfsdf"} />
                             <a class="text-xs text-green-600 hover:underline" href="/" data-config-id="03_secondary-action">Forgot password?</a>
 
                             </div>
