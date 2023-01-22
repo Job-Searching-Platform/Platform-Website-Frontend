@@ -19,10 +19,13 @@ const Navbar = () => {
     };
   }, [getToggleProfile]);
 
-
   useEffect(() => {
     const checkIfClickedOutsidemenu = (e) => {
-      if (getToggleMenu && refMenu.current && !refMenu.current.contains(e.target)) {
+      if (
+        getToggleMenu &&
+        refMenu.current &&
+        !refMenu.current.contains(e.target)
+      ) {
         setToggleMenu(false);
       }
     };
@@ -32,20 +35,20 @@ const Navbar = () => {
     };
   }, [getToggleMenu]);
   return (
-    <div id="page-container" class="flex flex-col mx-auto w-full  bg-gray-100">
+    <div id="page-container" class="mx-auto flex w-full flex-col  bg-gray-900">
       {/* <!-- Page Header --> */}
       <header
         id="page-header"
-        class="flex flex-none items-center bg-white shadow-sm z-1"
+        class="z-1 flex flex-none items-center  shadow-sm"
       >
-        <div class="container xl:max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="container mx-auto px-4 lg:px-8 xl:max-w-7xl">
           <div class="flex justify-between py-4">
             {/* <!-- Left Section --> */}
             <div class="flex items-center">
               {/* <!-- Logo --> */}
               <a
                 href="/"
-                class="group inline-flex items-center space-x-2 font-bold text-lg tracking-wide text-gray-700 hover:text-blue-600 active:text-gray-700"
+                class="group inline-flex items-center space-x-2 text-lg font-bold tracking-wide text-gray-700 hover:text-blue-600 active:text-gray-700"
               >
                 <Logo
                   width={128}
@@ -65,27 +68,27 @@ const Navbar = () => {
               <nav class="hidden lg:flex lg:items-center lg:space-x-2">
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded border border-blue-50 bg-blue-50 text-blue-500"
+                  class="flex items-center space-x-2 rounded border border-blue-50 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-500"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-home inline-block w-5 h-5"
+                    class="hi-solid hi-home inline-block h-5 w-5 opacity-50"
                   >
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                   </svg>
-                  <span>Post Job</span>
+                  <span>For job seekers</span>
                 </a>
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded text-gray-600 border border-transparent hover:text-blue-500 hover:bg-blue-50 hover:border-blue-50 active:bg-blue-100 active:border-blue-100"
+                  class="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-user-circle inline-block w-5 h-5"
+                    class="hi-solid hi-user-circle inline-block h-5 w-5 opacity-50"
                   >
                     <path
                       fill-rule="evenodd"
@@ -93,17 +96,17 @@ const Navbar = () => {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span>Profile</span>
+                  <span>For employers</span>
                 </a>
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded text-gray-600 border border-transparent hover:text-blue-500 hover:bg-blue-50 hover:border-blue-50 active:bg-blue-100 active:border-blue-100"
+                  class="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-briefcase inline-block w-5 h-5"
+                    class="hi-solid hi-briefcase inline-block h-5 w-5 opacity-50"
                   >
                     <path
                       fill-rule="evenodd"
@@ -112,17 +115,17 @@ const Navbar = () => {
                     ></path>
                     <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                   </svg>
-                  <span>Projects</span>
+                  <span>Resumes</span>
                 </a>
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded text-gray-600 border border-transparent hover:text-blue-500 hover:bg-blue-50 hover:border-blue-50 active:bg-blue-100 active:border-blue-100"
+                  class="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-cog inline-block w-5 h-5"
+                    class="hi-solid hi-cog inline-block h-5 w-5 opacity-50"
                   >
                     <path
                       fill-rule="evenodd"
@@ -141,23 +144,37 @@ const Navbar = () => {
                 <button
                   type="button"
                   onClick={() => setToggleProfile((oldState) => !oldState)}
-                  class="inline-flex justify-center items-center space-x-2 border font-semibold focus:outline-none px-3 py-2 leading-5 text-sm rounded border-gray-300 bg-white text-gray-800 shadow-sm hover:text-gray-800 hover:bg-gray-100 hover:border-gray-300 hover:shadow focus:ring focus:ring-gray-500 focus:ring-opacity-25 active:bg-white active:border-white active:shadow-none"
+                  class="inline-flex items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-semibold leading-5 text-gray-800 shadow-sm hover:border-gray-300 hover:bg-gray-100 hover:text-gray-800 hover:shadow focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-25 active:border-white active:bg-white active:shadow-none"
                   id="tk-dropdown-layouts-user"
                   aria-haspopup="true"
                   aria-expanded="true"
                 >
-                  <span>John</span>
                   <svg
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-chevron-down inline-block w-5 h-5"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   >
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                  </svg>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title />
+                    <circle cx="12" cy="8" fill="#464646" r="4" />
                     <path
-                      fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
+                      d="M20,19v1a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V19a6,6,0,0,1,6-6h4A6,6,0,0,1,20,19Z"
+                      fill="#464646"
+                    />
                   </svg>
                 </button>
                 {/* <!-- END Dropdown Toggle Button -->
@@ -180,14 +197,14 @@ const Navbar = () => {
                   <div
                     role="menu"
                     aria-labelledby="tk-dropdown-with-header-badges"
-                    class="absolute right-0 origin-top-right mt-2 w-64 shadow-xl rounded z-1"
+                    class="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded shadow-xl"
                   >
-                    <div class="bg-white ring-1 ring-black ring-opacity-5 rounded divide-y divide-gray-100">
-                      <div class="p-3 flex items-center space-x-3">
+                    <div class="divide-y divide-gray-100 rounded bg-white ring-1 ring-black ring-opacity-5">
+                      <div class="flex items-center space-x-3 p-3">
                         <img
                           src="https://source.unsplash.com/iFgRcqHznqg/160x160"
                           alt="User Avatar"
-                          class="flex-none inline-block w-10 h-10 rounded-full"
+                          class="inline-block h-10 w-10 flex-none rounded-full"
                         />
                         <div class="grow text-sm">
                           <a
@@ -199,15 +216,15 @@ const Navbar = () => {
                           <p class="text-gray-500">john.doe@example.com</p>
                         </div>
                       </div>
-                      <div class="p-2 space-y-1">
+                      <div class="space-y-1 p-2">
                         <a
                           role="menuitem"
                           href="/"
-                          class="flex items-center justify-between space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-100 focus:text-gray-700"
+                          class="flex items-center justify-between space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 focus:outline-none"
                         >
-                          <div class="flex-none flex items-center space-x-2">
+                          <div class="flex flex-none items-center space-x-2">
                             <svg
-                              class="hi-solid hi-annotation inline-block w-5 h-5 opacity-50"
+                              class="hi-solid hi-annotation inline-block h-5 w-5 opacity-50"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                               xmlns="http://www.w3.org/2000/svg"
@@ -220,18 +237,18 @@ const Navbar = () => {
                             </svg>
                             <span>Notifications</span>
                           </div>
-                          <div class="font-semibold inline-flex px-2 py-1 leading-4 ml-2 text-sm rounded-full text-emerald-700 bg-emerald-200">
+                          <div class="ml-2 inline-flex rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-700">
                             3
                           </div>
                         </a>
                         <a
                           role="menuitem"
                           href="/"
-                          class="flex items-center justify-between space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-100 focus:text-gray-700"
+                          class="flex items-center justify-between space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 focus:outline-none"
                         >
-                          <div class="flex-none flex items-center space-x-2">
+                          <div class="flex flex-none items-center space-x-2">
                             <svg
-                              class="hi-solid hi-inbox inline-block w-5 h-5 opacity-50"
+                              class="hi-solid hi-inbox inline-block h-5 w-5 opacity-50"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                               xmlns="http://www.w3.org/2000/svg"
@@ -244,20 +261,20 @@ const Navbar = () => {
                             </svg>
                             <span>Inbox</span>
                           </div>
-                          <div class="font-semibold inline-flex px-2 py-1 leading-4 ml-2 text-sm rounded-full text-emerald-700 bg-emerald-200">
+                          <div class="ml-2 inline-flex rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-700">
                             5
                           </div>
                         </a>
                       </div>
-                      <div class="p-2 space-y-1">
+                      <div class="space-y-1 p-2">
                         <form onsubmit="return false;">
                           <button
                             type="submit"
                             role="menuitem"
-                            class="w-full text-left flex items-center space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-100 focus:text-gray-700"
+                            class="flex w-full items-center space-x-2 rounded py-2 px-3 text-left text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 focus:outline-none"
                           >
                             <svg
-                              class="hi-solid hi-lock-closed inline-block w-5 h-5 opacity-50"
+                              class="hi-solid hi-lock-closed inline-block h-5 w-5 opacity-50"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                               xmlns="http://www.w3.org/2000/svg"
@@ -284,13 +301,13 @@ const Navbar = () => {
                 <button
                   type="button"
                   onClick={() => setToggleMenu((oldState) => !oldState)}
-                  class="inline-flex justify-center items-center space-x-2 border font-semibold focus:outline-none px-3 py-2 leading-6 rounded border-gray-300 bg-white text-gray-800 shadow-sm hover:text-gray-800 hover:bg-gray-100 hover:border-gray-300 hover:shadow focus:ring focus:ring-gray-500 focus:ring-opacity-25 active:bg-white active:border-white active:shadow-none"
+                  class="inline-flex items-center justify-center space-x-2 rounded border border-gray-300 bg-white px-3 py-2 font-semibold leading-6 text-gray-800 shadow-sm hover:border-gray-300 hover:bg-gray-100 hover:text-gray-800 hover:shadow focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-25 active:border-white active:bg-white active:shadow-none"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="hi-solid hi-menu inline-block w-5 h-5"
+                    class="hi-solid hi-menu inline-block h-5 w-5"
                   >
                     <path
                       fill-rule="evenodd"
@@ -313,30 +330,30 @@ const Navbar = () => {
         --> */}
           <div class="lg:hidden">
             {getToggleMenu && (
-              <nav class="flex flex-col space-y-2 py-4 border-t">
+              <nav class="flex flex-col space-y-2 border-t py-4">
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded border border-blue-50 bg-blue-50 text-blue-500"
+                  class="flex items-center space-x-2 rounded border border-blue-50 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-500"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-home inline-block w-5 h-5"
+                    class="hi-solid hi-home inline-block h-5 w-5 opacity-50"
                   >
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                   </svg>
-                  <span>Home</span>
+                  <span>For job seekers</span>
                 </a>
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded text-gray-600 border border-transparent hover:text-blue-500 hover:bg-blue-50 hover:border-blue-50 active:bg-blue-100 active:border-blue-100"
+                  class="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-user-circle inline-block w-5 h-5"
+                    class="hi-solid hi-user-circle inline-block h-5 w-5 opacity-50"
                   >
                     <path
                       fill-rule="evenodd"
@@ -344,17 +361,17 @@ const Navbar = () => {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span>Profile</span>
+                  <span>For employers</span>
                 </a>
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded text-gray-600 border border-transparent hover:text-blue-500 hover:bg-blue-50 hover:border-blue-50 active:bg-blue-100 active:border-blue-100"
+                  class="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-briefcase inline-block w-5 h-5"
+                    class="hi-solid hi-briefcase inline-block h-5 w-5 opacity-50"
                   >
                     <path
                       fill-rule="evenodd"
@@ -363,17 +380,17 @@ const Navbar = () => {
                     ></path>
                     <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                   </svg>
-                  <span>Projects</span>
+                  <span>Resumes</span>
                 </a>
                 <a
                   href="/"
-                  class="text-sm font-medium flex items-center space-x-2 px-3 py-2 rounded text-gray-600 border border-transparent hover:text-blue-500 hover:bg-blue-50 hover:border-blue-50 active:bg-blue-100 active:border-blue-100"
+                  class="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="opacity-50 hi-solid hi-cog inline-block w-5 h-5"
+                    class="hi-solid hi-cog inline-block h-5 w-5 opacity-50"
                   >
                     <path
                       fill-rule="evenodd"

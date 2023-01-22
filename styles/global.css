@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body bg-slate-200 text-base font-normal text-primary;
+  }
+  a {
+    @apply font-body text-base font-medium uppercase tracking-[5%];
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+  .h1 {
+    @apply text-[68px] leading-none lg:text-[100px];
+  }
+  .h2 {
+    @apply text-[36px] leading-[140%] lg:text-[48px];
+  }
+  .h3 {
+    @apply font-body text-accent mb-4 text-[24px] font-bold uppercase leading-[40px] tracking-[10%] lg:mb-10;
+  }
+  .lead {
+    @apply font-body text-[18px] font-light leading-[40px];
+  }
+  .btn {
+    @apply bg-accent font-body hover:bg-accent-hover flex h-[60px] items-center gap-6 rounded-[5px] py-[20px] px-[24px] text-base font-medium uppercase tracking-[5%] text-white;
+  }
+  .input {
+    @apply ring-accent/50 focus:ring-accent h-[60px] max-w-[400px] rounded-[5px] px-[40px] text-[18px] font-bold outline-none ring-1 transition placeholder:text-[18px] placeholder:font-light placeholder:text-primary focus:ring-2 focus:drop-shadow-primary;
+  }
+}

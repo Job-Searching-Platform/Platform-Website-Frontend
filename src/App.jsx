@@ -11,6 +11,8 @@ import Navbar from "./layouts/Navbar";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Policy from "./pages/Policy";
+import Accordion from "./pages/Accordion";
+import Profile from "./pages/Recruiter/Profile";
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contacts />} />
         <Route exact path="/privacy-policy" element={<Policy />} />
+        <Route exact path="/Accordion" element={<Accordion />} />
+        <Route exact path="/profile" element={<Profile />} />
 
         <Route path="/download-mobile" element={<MobileApp />} />
         <Route path="*" element={<NotFound />} />
