@@ -1,7 +1,112 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
+import Select from "react-select";
+import Slider, { SliderThumb } from "@mui/material/Slider";
+import { styled } from "@mui/material/styles";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import {
+  JobTitleOptions,
+  LocationOptions,
+  CurrencyOptions,
+} from "./../data/JobTitle";
+const AirbnbSlider = styled(Slider)(({ theme }) => ({
+  color: "#3a8589",
+  height: 3,
+  padding: "13px 0",
+  "& .MuiSlider-thumb": {
+    height: 27,
+    width: 27,
+    backgroundColor: "#fff",
+    border: "1px solid currentColor",
+    "&:hover": {
+      boxShadow: "0 0 0 8px rgba(58, 133, 137, 0.16)",
+    },
+    "& .airbnb-bar": {
+      height: 9,
+      width: 1,
+      backgroundColor: "currentColor",
+      marginLeft: 1,
+      marginRight: 1,
+    },
+  },
+  "& .MuiSlider-track": {
+    height: 3,
+  },
+  "& .MuiSlider-rail": {
+    color: theme.palette.mode === "dark" ? "#bfbfbf" : "#d8d8d8",
+    opacity: theme.palette.mode === "dark" ? undefined : 1,
+    height: 3,
+  },
+}));
+
+function AirbnbThumbComponent(props) {
+  const { children, ...other } = props;
+  return (
+    <SliderThumb {...other}>
+      {children}
+      <span className="airbnb-bar" />
+      <span className="airbnb-bar" />
+      <span className="airbnb-bar" />
+    </SliderThumb>
+  );
+}
 
 const Home = () => {
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
+
   const [getToggleFilter, setToggleFilter] = useState(false);
+  const [getSwitchVisa, setSwitchVisa] = useState(true);
+  const [getCurrency, setCurrency] = useState(CurrencyOptions[0]);
+  const [getJobTitleSelector, setJobTitleSelector] = useState({
+    selectedJobTitle: [],
+  });
+  const [getLocationSelector, setLocationSelector] = useState({
+    selectedLocation: [],
+  });
+  const [checked, setChecked] = useState({
+    fulltime: false,
+    contract: false,
+    internship: false,
+    cofounder: false,
+    newgrad: false,
+  });
+
+  const handleCheckbox = (e) => {
+    const answer =
+      e.target.name === "fulltime"
+        ? checked.fulltime
+        : e.target.name === "contract"
+        ? checked.contract
+        : e.target.name === "internship"
+        ? checked.internship
+        : e.target.name === "cofounder"
+        ? checked.cofounder
+        : checked.newgrad;
+
+    const name = e.target.name;
+    setChecked((values) => ({ ...values, [name]: !answer }));
+  };
+  const handleVisaSwitcher = () => {
+    setSwitchVisa(!getSwitchVisa);
+  };
+
+  const handleJobTitleSelector = (selectedJobTitle) => {
+    setJobTitleSelector({ selectedJobTitle });
+  };
+  const handleLocationSelector = (selectedLocation) => {
+    setLocationSelector({ selectedLocation });
+  };
+
+  const handleCurrencySelector = (selectedCurrency) => {
+    setCurrency(selectedCurrency);
+  };
+
+  const [value, setValue] = useState([20, 37]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className="flex  items-center justify-center bg-blue-700 ">
@@ -167,11 +272,11 @@ const Home = () => {
           {getToggleFilter ? (
             <>
               <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
-                <div className="relative my-6 mx-auto w-auto max-w-5xl">
+                <div className="relative my-6 mx-auto w-auto max-w-2xl">
                   {/*content*/}
                   <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
                     {/*header*/}
-                    <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
+                    <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5 px-44">
                       <h3 className="text-3xl font-semibold">Modal Title</h3>
                       <button
                         className="float-right ml-auto border-0 bg-transparent p-1 text-3xl font-semibold leading-none text-black opacity-5 outline-none focus:outline-none"
@@ -184,14 +289,140 @@ const Home = () => {
                     </div>
                     {/*body*/}
                     <div className="relative flex-auto p-6">
-                      <p className="my-4 text-lg leading-relaxed text-slate-500">
-                        I always felt like I could do anything. That’s the main
-                        thing people are controlled by! Thoughts- their
-                        perception of themselves! They're slowed down by their
-                        perception of themselves. If you're taught you can’t do
-                        anything, you won’t do anything. I was taught I could do
-                        everything.
-                      </p>
+                      <Select
+                        isMulti
+                        name="jobTitle"
+                        value={getJobTitleSelector.selectedJobTitle}
+                        onChange={handleJobTitleSelector}
+                        options={JobTitleOptions}
+                        className="basic-multi-select w-full"
+                        classNamePrefix="select"
+                      />
+                    </div>
+                    <div className="px-6">
+                      <Select
+                        isMulti
+                        name="location"
+                        value={getLocationSelector.selectedLocation}
+                        onChange={handleLocationSelector}
+                        options={LocationOptions}
+                        className="basic-multi-select w-full"
+                        classNamePrefix="select"
+                      />
+                    </div>
+                    <div className="px-6">
+                      <div className="my-4 flex flex-row space-x-5">
+                        <h1>
+                          {getCurrency.value} {value[0]}K
+                        </h1>
+                        <h1>
+                          {getCurrency.value} {value[1]}K
+                        </h1>
+                      </div>
+                      <div className="ml-4">
+                        <AirbnbSlider
+                          value={value}
+                          onChange={handleChange}
+                          slots={{ thumb: AirbnbThumbComponent }}
+                          getAriaLabel={(index) =>
+                            index === 0 ? "Minimum price" : "Maximum price"
+                          }
+                          min={0}
+                          max={200}
+                          defaultValue={[20, 40]}
+                          disableSwap
+                        />
+                      </div>
+                      <div className="">
+                        <Select
+                          name="currency"
+                          value={getCurrency}
+                          onChange={handleCurrencySelector}
+                          options={CurrencyOptions}
+                          defaultValue={CurrencyOptions[0]}
+                          className="basic-single "
+                          classNamePrefix="select"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2 px-8 py-4">
+                      <div className="font-bold">Job Types</div>
+                      <div>
+                        <div className="flex flex-row space-x-2">
+                          <input
+                            name="fulltime"
+                            type="checkbox"
+                            checked={checked.fulltime}
+                            onChange={handleCheckbox}
+                          />
+                          <label>Full Time</label>
+                        </div>
+                        <div className="flex flex-row space-x-2">
+                          <input
+                            name="contract"
+                            type="checkbox"
+                            checked={checked.contract}
+                            onChange={handleCheckbox}
+                          />
+                          <label>Contract</label>
+                        </div>
+                        <div className="flex flex-row space-x-2">
+                          <input
+                            name="internship"
+                            type="checkbox"
+                            checked={checked.internship}
+                            onChange={handleCheckbox}
+                          />
+                          <label>Internship</label>
+                        </div>
+                        <div className="flex flex-row space-x-2">
+                          <input
+                            name="cofounder"
+                            type="checkbox"
+                            checked={checked.cofounder}
+                            onChange={handleCheckbox}
+                          />
+                          <label>Cofounder</label>
+                        </div>
+                        <div className="flex flex-row space-x-2">
+                          <input
+                            name="newgrad"
+                            type="checkbox"
+                            checked={checked.newgrad}
+                            onChange={handleCheckbox}
+                          />
+                          <label>New Grad</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="px-8">
+                      <label class="relative inline-flex cursor-pointer items-center">
+                        <input
+                          type="checkbox"
+                          value={getSwitchVisa}
+                          onChange={handleVisaSwitcher}
+                          class="peer sr-only"
+                        />
+                        <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-900 ">
+                          Only show companies that can sponsor a visa
+                        </span>
+                      </label>
+                    </div>
+                    <div>
+                      <DatePicker
+                        selectsRange={true}
+                        startDate={startDate}
+                        endDate={endDate}
+                        dateFormat="dd/MM/yyyy"
+                        className="red-border ho rounded-full border border-red-800 px-4 py-2 items-center justify-center"
+                        placeholderText="Date Posted"
+                        fixedHeight
+                        onChange={(update) => {
+                          setDateRange(update);
+                        }}
+                        withPortal
+                      />
                     </div>
                     {/*footer*/}
                     <div className="flex items-center justify-end rounded-b border-t border-solid border-slate-200 p-6">
