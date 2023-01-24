@@ -1,55 +1,16 @@
-import { useState, Fragment } from "react";
-import Select from "react-select";
-import Slider, { SliderThumb } from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+
+import Switch from "../components/Switch";
+import Checkbox from "../components/CheckBox";
+import DateRange from "../components/DateRange";
+import SliderRange from "../components/SliderRange";
+import Selector from "../components/Selector";
+
 import {
   JobTitleOptions,
   LocationOptions,
   CurrencyOptions,
 } from "./../data/JobTitle";
-const AirbnbSlider = styled(Slider)(({ theme }) => ({
-  color: "#3a8589",
-  height: 3,
-  padding: "13px 0",
-  "& .MuiSlider-thumb": {
-    height: 27,
-    width: 27,
-    backgroundColor: "#fff",
-    border: "1px solid currentColor",
-    "&:hover": {
-      boxShadow: "0 0 0 8px rgba(58, 133, 137, 0.16)",
-    },
-    "& .airbnb-bar": {
-      height: 9,
-      width: 1,
-      backgroundColor: "currentColor",
-      marginLeft: 1,
-      marginRight: 1,
-    },
-  },
-  "& .MuiSlider-track": {
-    height: 3,
-  },
-  "& .MuiSlider-rail": {
-    color: theme.palette.mode === "dark" ? "#bfbfbf" : "#d8d8d8",
-    opacity: theme.palette.mode === "dark" ? undefined : 1,
-    height: 3,
-  },
-}));
-
-function AirbnbThumbComponent(props) {
-  const { children, ...other } = props;
-  return (
-    <SliderThumb {...other}>
-      {children}
-      <span className="airbnb-bar" />
-      <span className="airbnb-bar" />
-      <span className="airbnb-bar" />
-    </SliderThumb>
-  );
-}
 
 const Home = () => {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -104,7 +65,7 @@ const Home = () => {
 
   const [value, setValue] = useState([20, 37]);
 
-  const handleChange = (event, newValue) => {
+  const handleSlider = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -289,25 +250,23 @@ const Home = () => {
                     </div>
                     {/*body*/}
                     <div className="relative flex-auto p-6">
-                      <Select
-                        isMulti
+                      <Selector
                         name="jobTitle"
+                        className="basic-multi-select"
+                        options={JobTitleOptions}
+                        isMulti={true}
                         value={getJobTitleSelector.selectedJobTitle}
                         onChange={handleJobTitleSelector}
-                        options={JobTitleOptions}
-                        className="basic-multi-select w-full"
-                        classNamePrefix="select"
                       />
                     </div>
                     <div className="px-6">
-                      <Select
-                        isMulti
+                      <Selector
                         name="location"
+                        className="basic-multi-select"
+                        options={LocationOptions}
+                        isMulti={true}
                         value={getLocationSelector.selectedLocation}
                         onChange={handleLocationSelector}
-                        options={LocationOptions}
-                        className="basic-multi-select w-full"
-                        classNamePrefix="select"
                       />
                     </div>
                     <div className="px-6">
@@ -320,28 +279,16 @@ const Home = () => {
                         </h1>
                       </div>
                       <div className="ml-4">
-                        <AirbnbSlider
-                          value={value}
-                          onChange={handleChange}
-                          slots={{ thumb: AirbnbThumbComponent }}
-                          getAriaLabel={(index) =>
-                            index === 0 ? "Minimum price" : "Maximum price"
-                          }
-                          min={0}
-                          max={200}
-                          defaultValue={[20, 40]}
-                          disableSwap
-                        />
+                        <SliderRange value={value} onChange={handleSlider} />
                       </div>
                       <div className="">
-                        <Select
+                        <Selector
                           name="currency"
+                          className="basic-single"
+                          options={CurrencyOptions}
                           value={getCurrency}
                           onChange={handleCurrencySelector}
-                          options={CurrencyOptions}
                           defaultValue={CurrencyOptions[0]}
-                          className="basic-single "
-                          classNamePrefix="select"
                         />
                       </div>
                     </div>
@@ -349,79 +296,59 @@ const Home = () => {
                       <div className="font-bold">Job Types</div>
                       <div>
                         <div className="flex flex-row space-x-2">
-                          <input
+                          <Checkbox
+                            value={checked.fulltime}
+                            onChange={handleCheckbox}
+                            label="Full Time"
                             name="fulltime"
-                            type="checkbox"
-                            checked={checked.fulltime}
-                            onChange={handleCheckbox}
                           />
-                          <label>Full Time</label>
                         </div>
                         <div className="flex flex-row space-x-2">
-                          <input
+                          <Checkbox
+                            value={checked.contract}
+                            onChange={handleCheckbox}
+                            label="Contract"
                             name="contract"
-                            type="checkbox"
-                            checked={checked.contract}
-                            onChange={handleCheckbox}
                           />
-                          <label>Contract</label>
                         </div>
                         <div className="flex flex-row space-x-2">
-                          <input
+                          <Checkbox
+                            value={checked.internship}
+                            onChange={handleCheckbox}
+                            label="Internship"
                             name="internship"
-                            type="checkbox"
-                            checked={checked.internship}
-                            onChange={handleCheckbox}
                           />
-                          <label>Internship</label>
                         </div>
                         <div className="flex flex-row space-x-2">
-                          <input
+                          <Checkbox
+                            value={checked.cofounder}
+                            onChange={handleCheckbox}
+                            label="Cofounder"
                             name="cofounder"
-                            type="checkbox"
-                            checked={checked.cofounder}
-                            onChange={handleCheckbox}
                           />
-                          <label>Cofounder</label>
                         </div>
                         <div className="flex flex-row space-x-2">
-                          <input
-                            name="newgrad"
-                            type="checkbox"
-                            checked={checked.newgrad}
+                          <Checkbox
+                            value={checked.newgrad}
                             onChange={handleCheckbox}
+                            name="newgrad"
+                            label="New Grad"
                           />
-                          <label>New Grad</label>
                         </div>
                       </div>
                     </div>
                     <div className="px-8">
-                      <label class="relative inline-flex cursor-pointer items-center">
-                        <input
-                          type="checkbox"
-                          value={getSwitchVisa}
-                          onChange={handleVisaSwitcher}
-                          class="peer sr-only"
-                        />
-                        <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800"></div>
-                        <span class="ml-3 text-sm font-medium text-gray-900 ">
-                          Only show companies that can sponsor a visa
-                        </span>
-                      </label>
+                      <Switch
+                        value={getSwitchVisa}
+                        onChange={handleVisaSwitcher}
+                        label="Only show companies that can sponsor a visa"
+                      />
                     </div>
                     <div>
-                      <DatePicker
-                        selectsRange={true}
+                      <DateRange
                         startDate={startDate}
                         endDate={endDate}
-                        dateFormat="dd/MM/yyyy"
-                        className="red-border ho rounded-full border border-red-800 px-4 py-2 items-center justify-center"
-                        placeholderText="Date Posted"
-                        fixedHeight
-                        onChange={(update) => {
-                          setDateRange(update);
-                        }}
-                        withPortal
+                        setDateRange={setDateRange}
                       />
                     </div>
                     {/*footer*/}

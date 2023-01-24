@@ -1,18 +1,15 @@
-const Checkbox = ({ label, value, onChange }) => {
+const Checkbox = ({ label, value, onChange, name }) => {
   return (
-    <label>
-      <input type="checkbox" checked={value} onChange={onChange} />
-      {label}
-    </label>
+    <>
+      <input
+        name={name}
+        type="checkbox"
+        checked={value}
+        onChange={onChange}
+      />
+      <label>{label}</label>
+    </>
   );
 };
 
 export default Checkbox;
-
-{
-  /* <Checkbox
-        label="My Value"
-        value={checked}
-        onChange={handleChange}
-      /> */
-}
