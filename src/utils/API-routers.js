@@ -1,158 +1,50 @@
 import http from "./backend-link";
 
-class Yellowspace {
-  login(data) {
-    return http.post("admin/login", data);
+class Request {
+  // Authentication
+  signup(path, data) {
+    return http.post(`/api/v1/${path}/signup`, data);
   }
-  logout() {
-    return http.get("admin/logout");
+  login(path, data) {
+    return http.post(`/api/v1/${path}/login`, data);
   }
-  getResearch(page = 0, limit = 6) {
-    return http.get(`research?page=${page}&limit=${limit}`);
+  logout(path) {
+    return http.get(`/api/v1/${path}/logout`);
   }
-  filterResearch(term, field, limit) {
-    return http.get(
-      `research/filter?text=${term}&route=searchResearches&field=${field}&limit=${limit}`
-    );
+  forgotPassword(path) {
+    return http.get(`/api/v1/${path}/forgotPassword`);
   }
-
-  deleteResearch(id) {
-    return http.delete(`research/${id}`);
+  resetPassword(path) {
+    return http.get(`/api/v1/${path}/resetPassword/:token`);
   }
-  patchResearch(id, data) {
-    return http.patch(`research/${id}`, data);
+  googleLogin(path) {
+    return http.get(`/api/v1/${path}/google-login`);
   }
-  authorResearch(author) {
-    return http.get(
-      `research/filter?text=${author}&route=searchResearches&field=producer&limit=3`
-    );
-  }
-  postResearch(data) {
-    return http.post(`research`, data);
+  facebookLogin(path) {
+    return http.get(`/api/v1/${path}/facebook-login`);
   }
 
-  getNews(page = 0, limit = 6) {
-    return http.get(`news?page=${page}&limit=${limit}`);
+  // User Profile
+  getMe(path, id) {
+    return http.get(`/api/v1/${path}/me/${id}`);
   }
-  filterNews(term, field, limit) {
-    return http.get(
-      `news/filter?text=${term}&route=searchNews&field=${field}&limit=${limit}`
-    );
-  }
-
-  deleteNews(id) {
-    return http.delete(`news/${id}`);
-  }
-  patchNews(id, data) {
-    return http.patch(`news/${id}`, data);
-  }
-  authorNews(author) {
-    return http.get(
-      `news/filter?text=${author}&route=searchNews&field=producer&limit=3`
-    );
-  }
-  postNews(data) {
-    return http.post(`news`, data);
+  editMe(path, id) {
+    return http.patch(`/api/v1/${path}/me/${id}`);
   }
 
-  getGallery(page = 0, limit = 3) {
-    return http.get(`photo?page=${page}&limit=${limit}`);
+  // User Education, Experience, Profile
+  getEduExperienceProfile(path, section, id) {
+    return http.get(`/api/v1/${path}/${section}/${id}`);
   }
-  searchGallery(searchTerm = null) {
-    return http.get(`photo?text[search]=${searchTerm}`);
+  createEduExperienceProfile(path, section, data) {
+    return http.post(`/api/v1/${path}/${section}`, data);
   }
-  filterGallery(term, field, limit) {
-    return http.get(
-      `photo/filter?text=${term}&route=searchPhotos&field=${field}&limit=${limit}`
-    );
+  deleteEduExperienceProfile(path, section, id) {
+    return http.delete(`/api/v1/${path}/${section}/${id}`);
   }
-  deleteGallery(id) {
-    return http.delete(`photo/${id}`);
-  }
-  patchGallery(id, data) {
-    return http.patch(`photo/${id}`, data);
-  }
-  authorGallery(author) {
-    return http.get(
-      `photo/filter?text=${author}&route=searchPhotos&field=producer&limit=3`
-    );
-  }
-  postGallery(data) {
-    return http.post(`photo`, data);
-  }
-
-  getPodcast(page = 0, limit = 3) {
-    return http.get(`podcast?page=${page}&limit=${limit}`);
-  }
-  searchPodcast(searchTerm = null) {
-    return http.get(`podcast?text[search]=${searchTerm}`);
-  }
-  filterPodcast(term, field, limit) {
-    return http.get(
-      `podcast/filter?text=${term}&route=searchPodcasts&field=${field}&limit=${limit}`
-    );
-  }
-  deletePodcast(id) {
-    return http.delete(`podcast/${id}`);
-  }
-  patchPodcast(id, data) {
-    return http.patch(`podcast/${id}`, data);
-  }
-  authorPodcast(author) {
-    return http.get(
-      `podcast/filter?text=${author}&route=searchPodcasts&field=producer&limit=3`
-    );
-  }
-  postPodcast(data) {
-    return http.post(`podcast`, data);
-  }
-
-  getVideo(page = 0, limit = 3) {
-    return http.get(`video?page=${page}&limit=${limit}`);
-  }
-  searchVideo(searchTerm = null) {
-    return http.get(`video?text[search]=${searchTerm}`);
-  }
-  filterVideo(term, field, limit) {
-    return http.get(
-      `video/filter?text=${term}&route=searchVideos&field=${field}&limit=${limit}`
-    );
-  }
-  deleteVideo(id) {
-    return http.delete(`video/${id}`);
-  }
-  patchVideo(id, data) {
-    return http.patch(`video/${id}`, data);
-  }
-  authorVideo(author) {
-    return http.get(
-      `video/filter?text=${author}&route=searchVideos&field=producer&limit=3`
-    );
-  }
-  postVideo(data) {
-    return http.post(`video`, data);
-  }
-
-  getAnnouncement(page = 0, limit = 1) {
-    return http.get(`announcement?page=${page}&limit=${limit}`);
-  }
-  deleteAnnouncement(id) {
-    return http.delete(`announcement/${id}`);
-  }
-  patchAnnouncement(id, data) {
-    return http.patch(`announcement/${id}`, data);
-  }
-  postAnnouncement(data) {
-    return http.post(`announcement`, data);
-  }
-  AWS_Link(route = "news") {
-    return http.get(`aws/${route}`);
-  }
-  searchFilter({ link, term, route, limit, field }) {
-    return http.get(
-      `${link}/filter?text=${term}&route=${route}&field=${field}&limit=${limit}`
-    );
+  editEduExperienceProfile(path, section, id, data) {
+    return http.patch(`/api/v1/${path}/${section}/${id}`, data);
   }
 }
 
-export default new Yellowspace();
+export default new Request();

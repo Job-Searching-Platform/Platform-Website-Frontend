@@ -4,7 +4,6 @@ import axios from "axios";
 
 const Facebook = ({ informParent = (f) => f }) => {
   const responseFacebook = (response) => {
-    console.log(response);
     axios({
       method: "POST",
       url: `${process.env.REACT_APP_API}/facebook-login`,
@@ -28,15 +27,15 @@ const Facebook = ({ informParent = (f) => f }) => {
         render={(renderProps) => (
           <button
             onClick={renderProps.onClick}
-            className="mb-4 py-4 w-full flex justify-center items-center border rounded hover:bg-gray-50"
+            className="mb-4 flex w-full items-center justify-center rounded border py-4 hover:bg-gray-50"
           >
             <img
-              class="mr-4"
+              className="mr-4"
               src="https://shuffle.dev/atis-assets/social/facebook-logo.png"
               alt=""
             />
             <span
-              class="text-xs text-gray-500 font-bold transition duration-200"
+              className="text-xs font-bold text-gray-500 transition duration-200"
               data-config-id="fb-action"
             >
               Sign In with Facebook

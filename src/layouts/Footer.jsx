@@ -85,8 +85,8 @@ const Footer = () => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"
                       ></path>
                     </svg>
@@ -229,9 +229,9 @@ const Footer = () => {
       </section> */}
       <section
         tabIndex="-1"
-        className="flex justify-between bg-blue-600 py-1 z-50 fixed w-full bottom-0 left-0"
+        className="fixed bottom-0 left-0 z-50 flex w-full justify-between bg-blue-600 py-1"
       >
-        <div className="flex items-center flex-row space-x-3 text-xs">
+        <div className="flex flex-row items-center space-x-3 text-xs">
           {/* <!-- left --> */}
           <span> © 2023 Airbnb, Inc. </span>
           <span>·</span>
@@ -261,7 +261,7 @@ const Footer = () => {
               <path
                 d="M4.5 6.5l1.774 1.774a.25.25 0 00.39-.049L9.5 3.5"
                 stroke="#06F"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 data-darkreader-inline-stroke=""
                 style={{ darkreaderInlineFill: "#869ba7" }}
 
@@ -270,7 +270,7 @@ const Footer = () => {
               <path
                 d="M16.5 3.5L19 6m0 0l2.5 2.5M19 6l2.5-2.5M19 6l-2.5 2.5"
                 stroke="#fff"
-                stroke-linecap="round"
+                strokeLinecap="round"
                 data-darkreader-inline-stroke=""
                 style={{ darkreaderInlineFill: "#fbeed6" }}
 
@@ -291,12 +291,12 @@ const Footer = () => {
             </svg>
           </span>
         </div>
-        <div className="flex items-center flex-row space-x-3 text-xs">
+        <div className="flex flex-row items-center space-x-3 text-xs">
           {/* <!-- right --> */}
           <span>English (US)</span>
           <span>
             <button
-              className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              className="mr-1 mb-1 rounded bg-pink-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-pink-600"
               type="button"
               data-modal-target="defaultModal"
               data-modal-toggle="defaultModal"
@@ -315,13 +315,13 @@ const Footer = () => {
             id="defaultModal"
             tabIndex="-1"
             aria-hidden="true"
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed bottom-0 w-full z-50 outline-none focus:outline-none"
+            className="fixed bottom-0 z-50 flex w-full items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none"
           >
             <div className="relative w-full">
               {/*content*/}
-              <div className="border-0 rounded-t-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="relative flex w-full flex-col rounded-t-lg border-0 bg-white shadow-lg outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                <div className="flex items-start justify-between rounded-t border-b border-solid border-slate-200 p-5">
                   <button onClick={() => setShowModal(false)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -336,9 +336,9 @@ const Footer = () => {
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative grid grid-cols-3 items-center bg-red-600 pb-20 pt-10 gap-x-4 lg:pl-52 pl-10">
+                <div className="relative grid grid-cols-3 items-center gap-x-4 bg-red-600 pb-20 pt-10 pl-10 lg:pl-52">
                   <div>
-                    <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+                    <p className="text-sm font-semibold uppercase tracking-widest text-gray-400">
                       Company
                     </p>
 
@@ -389,7 +389,7 @@ const Footer = () => {
                     </ul>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+                    <p className="text-sm font-semibold uppercase tracking-widest text-gray-400">
                       Company
                     </p>
 
@@ -440,7 +440,7 @@ const Footer = () => {
                     </ul>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
+                    <p className="text-sm font-semibold uppercase tracking-widest text-gray-400">
                       Company
                     </p>
 
@@ -494,7 +494,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
       ) : null}
     </>

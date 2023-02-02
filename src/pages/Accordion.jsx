@@ -17,9 +17,9 @@ export default function Accordion() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
@@ -27,20 +27,20 @@ export default function Accordion() {
             </div>
             <div className="grid grid-rows-6 justify-center gap-32 bg-red-900 lg:grid-cols-6">
               <div className="col-span-2">
-                <div class="text-left">
-                  <div class="flex items-center">
-                    <div class="font-medium">Product Photos</div>
-                    <div class="ml-2 rounded-md bg-slate-900 px-2 py-0.5 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                <div className="text-left">
+                  <div className="flex items-center">
+                    <div className="font-medium">Product Photos</div>
+                    <div className="ml-2 rounded-md bg-slate-900 px-2 py-0.5 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-400">
                       Required
                     </div>
                   </div>
-                  <div class="mt-3 text-xs leading-relaxed text-slate-500">
+                  <div className="mt-3 text-xs leading-relaxed text-slate-500">
                     <div>
                       The image format is .jpg .jpeg .png and a minimum size of
                       300 x 300 pixels (For optimal images use a minimum size of
                       700 x 700 pixels).
                     </div>
-                    <div class="mt-2">
+                    <div className="mt-2">
                       Select product photos or drag and drop up to 5 photos at
                       once here. Include min. 3 attractive photos to make the
                       product more attractive to buyers.

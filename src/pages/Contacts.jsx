@@ -3,35 +3,35 @@ import React from "react";
 const Contacts = () => {
   return (
     // <!-- Shuffle -->
-    <section class="relative overflow-hidden">
-      <div class="hidden lg:block absolute right-0 bottom-0 h-full w-full lg:w-4/12">
+    <section className="relative overflow-hidden">
+      <div className="absolute right-0 bottom-0 hidden h-full w-full lg:block lg:w-4/12">
         <img
-          class="h-full w-full object-cover"
+          className="h-full w-full object-cover"
           src="https://images.unsplash.com/photo-1596485206311-2da5fafb3606?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
           alt=""
           data-config-id="image"
         />
       </div>
-      <div class="relative container px-4 mx-auto">
-        <div class="max-w-5xl mx-auto">
-          <div class="flex flex-wrap -mx-4 py-20 2xl:py-40">
-            <div class="w-full lg:w-2/5 px-4 mb-8 lg:mb-0">
+      <div className="container relative mx-auto px-4">
+        <div className="mx-auto max-w-5xl">
+          <div className="2xl:py-40 -mx-4 flex flex-wrap py-20">
+            <div className="mb-8 w-full px-4 lg:mb-0 lg:w-2/5">
               <span
-                class="text-lg font-bold text-blue-500"
+                className="text-lg font-bold text-blue-500"
                 data-config-id="label"
               >
                 Contact with us
               </span>
               <h2
-                class="mt-8 mb-12 md:mb-20 text-5xl font-bold font-heading"
+                className="font-heading mt-8 mb-12 text-5xl font-bold md:mb-20"
                 data-config-id="header"
               >
                 Our Office in London
               </h2>
-              <div class="flex py-6 border-b border-gray-50">
-                <span class="flex items-center justify-center w-12 h-12 mr-8 bg-blue-500 rounded-lg">
+              <div className="flex border-b border-gray-50 py-6">
+                <span className="mr-8 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500">
                   <svg
-                    class="w-4 h-4"
+                    className="h-4 w-4"
                     width="18"
                     height="18"
                     viewbox="0 0 18 18"
@@ -44,14 +44,14 @@ const Contacts = () => {
                     ></path>
                   </svg>
                 </span>
-                <p class="text-lg font-bold" data-config-id="val1">
+                <p className="text-lg font-bold" data-config-id="val1">
                   +44 20457523 00 01
                 </p>
               </div>
-              <div class="flex items-center py-6 border-b border-gray-50">
-                <span class="flex items-center justify-center w-12 h-12 mr-8 bg-blue-500 rounded-lg">
+              <div className="flex items-center border-b border-gray-50 py-6">
+                <span className="mr-8 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500">
                   <svg
-                    class="w-5 h-4"
+                    className="h-4 w-5"
                     width="21"
                     height="14"
                     viewbox="0 0 21 14"
@@ -64,14 +64,14 @@ const Contacts = () => {
                     ></path>
                   </svg>
                 </span>
-                <p class="text-lg font-bold" data-config-id="val2">
+                <p className="text-lg font-bold" data-config-id="val2">
                   support@shuffle.dev
                 </p>
               </div>
-              <div class="flex items-center py-6">
-                <span class="flex flex-shrink-0 items-center justify-center w-12 h-12 mr-8 bg-blue-500 rounded-lg">
+              <div className="flex items-center py-6">
+                <span className="mr-8 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500">
                   <svg
-                    class="w-5 h-5"
+                    className="h-5 w-5"
                     width="23"
                     height="23"
                     viewbox="0 0 23 23"
@@ -89,55 +89,55 @@ const Contacts = () => {
                   </svg>
                 </span>
                 <div>
-                  <p class="mb-5 text-lg font-bold" data-config-id="val3-1">
+                  <p className="mb-5 text-lg font-bold" data-config-id="val3-1">
                     Bayswater, London W16EG, UK
                   </p>
-                  <p class="text-gray-300" data-config-id="val3-2">
+                  <p className="text-gray-300" data-config-id="val3-2">
                     The one est bad, semper six at sem quis, congue 8 AM - 8 PM
                   </p>
                 </div>
               </div>
             </div>
-            <div class="w-full lg:w-3/5 px-4">
-              <div class="lg:ml-20 px-8 lg:px-12 py-16 w-full lg:max-w-md bg-white shadow-lg rounded-lg">
+            <div className="w-full px-4 lg:w-3/5">
+              <div className="w-full rounded-lg bg-white px-8 py-16 shadow-lg lg:ml-20 lg:max-w-md lg:px-12">
                 <form>
                   <h3
-                    class="mb-10 text-2xl font-bold font-heading"
+                    className="font-heading mb-10 text-2xl font-bold"
                     data-config-id="form-header"
                   >
                     Send a message!
                   </h3>
                   <input
-                    class="mb-4 w-full px-12 py-4 bg-white border font-bold placeholder-gray-900 rounded-full focus:outline-none"
+                    className="mb-4 w-full rounded-full border bg-white px-12 py-4 font-bold placeholder-gray-900 focus:outline-none"
                     type="email"
                     placeholder="example@shuffle.dev"
                   />
                   <input
-                    class="mb-4 w-full px-12 py-4 bg-white border font-bold placeholder-gray-900 rounded-full focus:outline-none"
+                    className="mb-4 w-full rounded-full border bg-white px-12 py-4 font-bold placeholder-gray-900 focus:outline-none"
                     type="text"
                     placeholder="Subject"
                   />
                   <textarea
-                    class="w-full mb-6 px-12 py-4 bg-white border font-bold placeholder-gray-900 rounded-3xl resize-none focus:outline-none"
+                    className="mb-6 w-full resize-none rounded-3xl border bg-white px-12 py-4 font-bold placeholder-gray-900 focus:outline-none"
                     name=""
                     id=""
                     cols="30"
                     rows="10"
                     placeholder="Your message"
                   ></textarea>
-                  <div class="flex mb-10">
+                  <div className="mb-10 flex">
                     <input type="checkbox" />
                     <p
-                      class="pl-4 max-w-xs text-sm text-gray-300"
+                      className="max-w-xs pl-4 text-sm text-gray-300"
                       data-config-id="terms"
                     >
                       By singning up, you agree to our Terms, Data Policy and
                       Cookies.
                     </p>
                   </div>
-                  <div class="text-right">
+                  <div className="text-right">
                     <button
-                      class="py-4 px-12 text-white font-bold bg-blue-500 hover:bg-blue-600 rounded-full transition duration-200"
+                      className="rounded-full bg-blue-500 py-4 px-12 font-bold text-white transition duration-200 hover:bg-blue-600"
                       data-config-id="primary-action"
                     >
                       Send

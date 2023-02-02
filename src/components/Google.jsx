@@ -28,15 +28,15 @@ const Google = ({ informParent = (f) => f }) => {
           <button
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
-            className="py-4 w-full flex justify-center items-center border rounded hover:bg-gray-50"
+            className="flex w-full items-center justify-center rounded border py-4 hover:bg-gray-50"
           >
             <img
-              class="mr-4"
+              className="mr-4"
               src="https://shuffle.dev/atis-assets/social/google-logo.png"
               alt=""
             />
             <span
-              class="text-xs text-gray-500 font-bold transition duration-200"
+              className="text-xs font-bold text-gray-500 transition duration-200"
               data-config-id="google-action"
             >
               Sign In with Google
