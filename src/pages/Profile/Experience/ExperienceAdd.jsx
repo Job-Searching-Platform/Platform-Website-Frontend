@@ -1,18 +1,22 @@
-// import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { addExperience } from "../../../store/features/editUserProfileSlice";
-
+import { addExperienceRecruiter } from "../../../store/features/editRecruiterProfileSlice";
 import Request from "../../../utils/API-routers";
 
 const ExperienceAdd = ({ setAddExperienceButton, getAddExperienceButton }) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const name = pathname.split("/")[1].toLocaleLowerCase();
-  const path = name === "recruiter" ? "recruiter" : "users";
+
+  const _id = useSelector((state) => state.UserProfile._id);
+  const _idRecruiter = useSelector((state) => state.RecruiterProfile._id);
+  const get_id = name === "recruiter" ? _idRecruiter : _id;
+
+  const path = name === "recruiter" ? "recruiters" : "users";
   const [getExperience, setExperience] = useState({
-    profile: "63b66643c94fdc51466b4e5a",
+    profile: get_id,
     company: "",
     description: "",
     title: "",
@@ -24,25 +28,36 @@ const ExperienceAdd = ({ setAddExperienceButton, getAddExperienceButton }) => {
     const { name, value } = e.target;
     setExperience((prev) => ({ ...prev, [name]: value }));
     // setExperience((prev) => ({ ...prev, getExperience.profile: "63b66643c94fdc51466b4e5a" }));
-    // setExperience({ ...getExperience, profile: "63b66643c94fdc51466b4e5a" });
   };
 
   const todoAddHandler = (e) => {
     e.preventDefault();
+    // setFinal((prev) => ({ ...prev, profile: "63b66643c94fdc51466b4e5a" }));
     // FIXME:  after adding one experience second one does not contain profile and error gives
     Request.createEduExperienceProfile(path, "myExperience", getExperience)
       .then((res) => {
         dispatch(
-          addExperience({
-            profile: res.data.doc.profile,
-            company: res.data.doc.company,
-            description: res.data.doc.description,
-            title: res.data.doc.title,
-            startDate: res.data.doc.startDate,
-            endDate: res.data.doc.endDate,
-            tags: res.data.doc.tags,
-            _id: res.data.doc._id,
-          })
+          name === "recruiter"
+            ? addExperienceRecruiter({
+                profile: res.data.doc.profile,
+                company: res.data.doc.company,
+                description: res.data.doc.description,
+                title: res.data.doc.title,
+                startDate: res.data.doc.startDate,
+                endDate: res.data.doc.endDate,
+                tags: res.data.doc.tags,
+                _id: res.data.doc._id,
+              })
+            : addExperience({
+                profile: res.data.doc.profile,
+                company: res.data.doc.company,
+                description: res.data.doc.description,
+                title: res.data.doc.title,
+                startDate: res.data.doc.startDate,
+                endDate: res.data.doc.endDate,
+                tags: res.data.doc.tags,
+                _id: res.data.doc._id,
+              })
         );
       })
       .catch((error) => {

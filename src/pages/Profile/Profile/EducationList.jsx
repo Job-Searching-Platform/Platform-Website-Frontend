@@ -54,7 +54,6 @@ const ExperienceList = ({ experience, setAddExperienceButton }) => {
         }
       });
   };
-  // TODO: after editing and sending and getting answer back, edited data is not displayed
   const DeleteTodoItemHandler = () => {
     Request.deleteEduExperienceProfile(path, "myExperience", getExperience._id)
       .then((res) => {

@@ -1,24 +1,26 @@
-// import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { addEducation } from "../../../store/features/editUserProfileSlice";
-
+import { addEducationRecruiter } from "../../../store/features/editRecruiterProfileSlice";
 import Request from "../../../utils/API-routers";
 
 const EducationAdd = ({ setAddEducationButton, getAddEducationButton }) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const name = pathname.split("/")[1].toLocaleLowerCase();
-  const path = name === "recruiter" ? "recruiter" : "users";
+
+  const _id = useSelector((state) => state.UserProfile._id);
+  const _idRecruiter = useSelector((state) => state.RecruiterProfile._id);
+  const get_id = name === "recruiter" ? _idRecruiter : _id;
+  const path = name === "recruiter" ? "recruiters" : "users";
   const [getEducation, setEducation] = useState({
-    profile: "63b66643c94fdc51466b4e5a",
-    company: "",
-    description: "",
-    title: "",
-    startDate: "",
-    endDate: "",
-    tags: [],
+    profile: get_id,
+    school: "",
+    degree: "",
+    graduation: "",
+    GPA: "",
+    major: [],
   });
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -30,23 +32,31 @@ const EducationAdd = ({ setAddEducationButton, getAddEducationButton }) => {
   const todoAddHandler = (e) => {
     e.preventDefault();
     // FIXME:  after adding one education second one does not contain profile and error gives
-    Request.createEduEducationProfile(path, "myEducation", getEducation)
+    Request.createEduExperienceProfile(path, "myEducation", getEducation)
       .then((res) => {
         dispatch(
-          addEducation({
-            profile: res.data.doc.profile,
-            company: res.data.doc.company,
-            description: res.data.doc.description,
-            title: res.data.doc.title,
-            startDate: res.data.doc.startDate,
-            endDate: res.data.doc.endDate,
-            tags: res.data.doc.tags,
-            _id: res.data.doc._id,
-          })
+          name === "recruiter"
+            ? addEducationRecruiter({
+                profile: res.data.doc.profile,
+                school: res.data.doc.school,
+                degree: res.data.doc.degree,
+                major: res.data.doc.major,
+                graduation: res.data.doc.graduation,
+                GPA: res.data.doc.GPA,
+                _id: res.data.doc._id,
+              })
+            : addEducation({
+                profile: res.data.doc.profile,
+                school: res.data.doc.school,
+                degree: res.data.doc.degree,
+                major: res.data.doc.major,
+                graduation: res.data.doc.graduation,
+                GPA: res.data.doc.GPA,
+                _id: res.data.doc._id,
+              })
         );
       })
       .catch((error) => {
-        console.log(error);
         if (error.response?.data.error.code === 11000) {
         }
       });
@@ -85,55 +95,47 @@ const EducationAdd = ({ setAddEducationButton, getAddEducationButton }) => {
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="Epam"
-            value={getEducation.company}
+            placeholder="UCA"
+            value={getEducation.school}
             onChange={onChangeHandler}
-            name="company"
+            name="school"
             autoFocus
           />
-          <input
-            className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
-            type="text"
-            placeholder="Full stack web developer"
-            value={getEducation.title}
-            onChange={onChangeHandler}
-            name="title"
-            autoFocus
-          />
+
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
             placeholder="2022-06-01T00:00:00.000Z"
-            value={getEducation.startDate}
+            value={getEducation.graduation}
             onChange={onChangeHandler}
-            name="startDate"
+            name="graduation"
             autoFocus
           />
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="2023-01-05T00:00:00.000Z"
-            value={getEducation.endDate}
+            placeholder="3.5"
+            value={getEducation.GPA}
             onChange={onChangeHandler}
-            name="endDate"
+            name="GPA"
             autoFocus
           />
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="Junior, B's of Science degree in Computer Science, Full Stack Deep Learning Engineer, Luanched AI powered Web application, worked as  DL Engineer in Tajrupt."
-            value={getEducation.description}
+            placeholder="B's of Science degree"
+            value={getEducation.degree}
             onChange={onChangeHandler}
-            name="description"
+            name="degree"
             autoFocus
           />
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="MERN Javascript MongoDB"
-            value={getEducation.tags}
+            placeholder="MongoDB"
+            value={getEducation.major}
             onChange={onChangeHandler}
-            name="tags"
+            name="major"
             autoFocus
           />
         </form>

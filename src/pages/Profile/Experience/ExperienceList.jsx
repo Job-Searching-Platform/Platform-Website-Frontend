@@ -5,13 +5,17 @@ import {
   editExperience,
   deleteExperience,
 } from "../../../store/features/editUserProfileSlice";
+import {
+  deleteExperienceRecruiter,
+  editExperienceRecruiter,
+} from "../../../store/features/editRecruiterProfileSlice";
 import Request from "../../../utils/API-routers";
 
 const ExperienceList = ({ experience, setAddExperienceButton }) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const name = pathname.split("/")[1].toLocaleLowerCase();
-  const path = name === "recruiter" ? "recruiter" : "users";
+  const path = name === "recruiter" ? "recruiters" : "users";
 
   const [getEditExperience, setEditExperience] = useState(false);
   const [getExperience, setExperience] = useState(experience);
@@ -37,16 +41,27 @@ const ExperienceList = ({ experience, setAddExperienceButton }) => {
       .then((res) => {
         console.log(res);
         dispatch(
-          editExperience({
-            profile: res.data.doc.profile,
-            company: res.data.doc.company,
-            description: res.data.doc.description,
-            title: res.data.doc.title,
-            startDate: res.data.doc.startDate,
-            endDate: res.data.doc.endDate,
-            tags: res.data.doc.tags,
-            _id: res.data.doc._id,
-          })
+          name === "recruiter"
+            ? editExperienceRecruiter({
+                profile: res.data.doc.profile,
+                company: res.data.doc.company,
+                description: res.data.doc.description,
+                title: res.data.doc.title,
+                startDate: res.data.doc.startDate,
+                endDate: res.data.doc.endDate,
+                tags: res.data.doc.tags,
+                _id: res.data.doc._id,
+              })
+            : editExperience({
+                profile: res.data.doc.profile,
+                company: res.data.doc.company,
+                description: res.data.doc.description,
+                title: res.data.doc.title,
+                startDate: res.data.doc.startDate,
+                endDate: res.data.doc.endDate,
+                tags: res.data.doc.tags,
+                _id: res.data.doc._id,
+              })
         );
       })
       .catch((error) => {
@@ -54,15 +69,18 @@ const ExperienceList = ({ experience, setAddExperienceButton }) => {
         }
       });
   };
-  // TODO: after editing and sending and getting answer back, edited data is not displayed
   const DeleteTodoItemHandler = () => {
     Request.deleteEduExperienceProfile(path, "myExperience", getExperience._id)
       .then((res) => {
         console.log(res);
         dispatch(
-          deleteExperience({
-            _id: getExperience._id,
-          })
+          name === "recruiter"
+            ? deleteExperienceRecruiter({
+                _id: getExperience._id,
+              })
+            : deleteExperience({
+                _id: getExperience._id,
+              })
         );
       })
       .catch((error) => {

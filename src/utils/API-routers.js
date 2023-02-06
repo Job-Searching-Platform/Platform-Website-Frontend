@@ -24,15 +24,7 @@ class Request {
     return http.get(`/api/v1/${path}/facebook-login`);
   }
 
-  // User Profile
-  getMe(path, id) {
-    return http.get(`/api/v1/${path}/me/${id}`);
-  }
-  editMe(path, id) {
-    return http.patch(`/api/v1/${path}/me/${id}`);
-  }
-
-  // User Education, Experience, Profile
+  //     ######  Education, Experience, Profile   ########
   getEduExperienceProfile(path, section, id) {
     return http.get(`/api/v1/${path}/${section}/${id}`);
   }
@@ -44,6 +36,23 @@ class Request {
   }
   editEduExperienceProfile(path, section, id, data) {
     return http.patch(`/api/v1/${path}/${section}/${id}`, data);
+  }
+
+  // ######    JOB & Company  (recruiter)  ########
+  createRecruiterJobCompany(route, data) {
+    return http.post(`/api/v1/${route}/create-${route}`, data);
+  }
+  getRecruiterJobCompany(route, id) {
+    return http.get(`/api/v1/recruiters/${route}/${id}`);
+  }
+  getJobCompany(route, id) {
+    return http.get(`/api/v1/${route}/detail/${id}`);
+  }
+  deleteRecruiterJobCompany(route, id) {
+    return http.delete(`/api/v1/${route}/detail/${id}`);
+  }
+  editRecruiterJobCompany(route, id, data) {
+    return http.patch(`/api/v1/${route}/detail/${id}`, data);
   }
 }
 

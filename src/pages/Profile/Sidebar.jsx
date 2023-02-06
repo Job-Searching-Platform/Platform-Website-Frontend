@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -8,7 +7,6 @@ const Sidebar = () => {
   if (name === "recruiter") {
     name = name + "/profile";
   }
-  console.log(name);
   return (
     <div className="mb-10 flex flex-col items-center justify-center md:fixed md:max-w-[10rem] md:items-start">
       <NavLink
@@ -22,7 +20,7 @@ const Sidebar = () => {
         <NavLink
           className="mr-3 font-semibold md:mb-2"
           style={({ isActive }) => ({ color: isActive ? "#3d9de1" : "#333" })}
-          to={`/${name}/social-profile`}
+          to={`/${name}/social_profile`}
         >
           Social Profiles
         </NavLink>
@@ -57,7 +55,7 @@ const Sidebar = () => {
         <NavLink
           className="mr-3 font-semibold md:mb-2"
           style={({ isActive }) => ({ color: isActive ? "#3d9de1" : "#333" })}
-          to={`/${name}/prefered-job`}
+          to={`/${name}/prefered_job`}
         >
           Desired job
         </NavLink>

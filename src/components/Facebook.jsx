@@ -10,12 +10,12 @@ const Facebook = ({ informParent = (f) => f }) => {
       data: { userID: response.userID, accessToken: response.accessToken },
     })
       .then((response) => {
-        console.log("FACEBOOK SIGNIN SUCCESS", response);
+        // console.log("FACEBOOK SIGNIN SUCCESS", response);
         // inform parent component
         informParent(response);
       })
       .catch((error) => {
-        console.log("FACEBOOK SIGNIN ERROR", error.response);
+        // console.log("FACEBOOK SIGNIN ERROR", error.response);
       });
   };
   return (

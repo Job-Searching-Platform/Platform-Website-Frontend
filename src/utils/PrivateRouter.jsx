@@ -4,15 +4,19 @@ import Cookies from "js-cookie";
 
 const PrivateRouter = () => {
   const location = useLocation();
-  const logged_in_user = Cookies.get("logged_in_user");
+  const name = location.pathname.split("/")[1].toLocaleLowerCase();
+  const path = name === "recruiter" ? "/recruiter/sign-in" : "/sign-in";
+  const logged_in =
+    name === "recruiter"
+      ? Cookies.get("logged_in_recruiter")
+      : Cookies.get("logged_in_user");
   return (
     <>
-      {logged_in_user ? (
+      {logged_in ? (
         <Outlet />
       ) : (
-        <Navigate to="/sign-in" replace state={{ from: location }} />
+        <Navigate to={path} replace state={{ from: location }} />
       )}
-      ;
     </>
   );
 };

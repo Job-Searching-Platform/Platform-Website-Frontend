@@ -5,13 +5,17 @@ import {
   editEducation,
   deleteEducation,
 } from "../../../store/features/editUserProfileSlice";
+import {
+  deleteEducationRecruiter,
+  editEducationRecruiter,
+} from "../../../store/features/editRecruiterProfileSlice";
 import Request from "../../../utils/API-routers";
 
 const EducationList = ({ education, setAddEducationButton }) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const name = pathname.split("/")[1].toLocaleLowerCase();
-  const path = name === "recruiter" ? "recruiter" : "users";
+  const path = name === "recruiter" ? "recruiters" : "users";
 
   const [getEditEducation, setEditEducation] = useState(false);
   const [getEducation, setEducation] = useState(education);
@@ -28,7 +32,7 @@ const EducationList = ({ education, setAddEducationButton }) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setEditEducation(false);
-    Request.editEduEducationProfile(
+    Request.editEduExperienceProfile(
       path,
       "myEducation",
       getEducation._id,
@@ -37,16 +41,25 @@ const EducationList = ({ education, setAddEducationButton }) => {
       .then((res) => {
         console.log(res);
         dispatch(
-          editEducation({
-            profile: res.data.doc.profile,
-            company: res.data.doc.company,
-            description: res.data.doc.description,
-            title: res.data.doc.title,
-            startDate: res.data.doc.startDate,
-            endDate: res.data.doc.endDate,
-            tags: res.data.doc.tags,
-            _id: res.data.doc._id,
-          })
+          name === "recruiter"
+            ? editEducationRecruiter({
+                profile: res.data.doc.profile,
+                school: res.data.doc.school,
+                graduation: res.data.doc.graduation,
+                degree: res.data.doc.degree,
+                major: res.data.doc.major,
+                GPA: res.data.doc.GPA,
+                _id: res.data.doc._id,
+              })
+            : editEducation({
+                profile: res.data.doc.profile,
+                school: res.data.doc.school,
+                graduation: res.data.doc.graduation,
+                degree: res.data.doc.degree,
+                major: res.data.doc.major,
+                GPA: res.data.doc.GPA,
+                _id: res.data.doc._id,
+              })
         );
       })
       .catch((error) => {
@@ -56,13 +69,17 @@ const EducationList = ({ education, setAddEducationButton }) => {
   };
   // TODO: after editing and sending and getting answer back, edited data is not displayed
   const DeleteTodoItemHandler = () => {
-    Request.deleteEduEducationProfile(path, "myEducation", getEducation._id)
+    Request.deleteEduExperienceProfile(path, "myEducation", getEducation._id)
       .then((res) => {
         console.log(res);
         dispatch(
-          deleteEducation({
-            _id: getEducation._id,
-          })
+          name === "recruiter"
+            ? deleteEducationRecruiter({
+                _id: getEducation._id,
+              })
+            : deleteEducation({
+                _id: getEducation._id,
+              })
         );
       })
       .catch((error) => {
@@ -82,55 +99,47 @@ const EducationList = ({ education, setAddEducationButton }) => {
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="Epam"
-            value={getEducation.company}
+            placeholder="UCA"
+            value={getEducation.school}
             onChange={onChangeHandler}
-            name="company"
+            name="school"
             autoFocus
           />
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="Full stack web developer"
-            value={getEducation.title}
+            placeholder="Bachelors"
+            value={getEducation.degree}
             onChange={onChangeHandler}
-            name="title"
+            name="degree"
             autoFocus
           />
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
             placeholder="2022-06-01T00:00:00.000Z"
-            value={getEducation.startDate}
+            value={getEducation.graduation}
             onChange={onChangeHandler}
-            name="startDate"
+            name="graduation"
             autoFocus
           />
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="2023-01-05T00:00:00.000Z"
-            value={getEducation.endDate}
+            placeholder="CS"
+            value={getEducation.major}
             onChange={onChangeHandler}
-            name="endDate"
+            name="major"
             autoFocus
           />
+
           <input
             className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
             type="text"
-            placeholder="Junior, B's of Science degree in Computer Science, Full Stack Deep Learning Engineer, Luanched AI powered Web application, worked as  DL Engineer in Tajrupt."
-            value={getEducation.description}
+            placeholder="3.4"
+            value={getEducation.GPA}
             onChange={onChangeHandler}
-            name="description"
-            autoFocus
-          />
-          <input
-            className="mb-3 w-full border-0 p-0 pl-1 font-light text-black placeholder-gray-400 focus:ring-0"
-            type="text"
-            placeholder="MERN Javascript MongoDB"
-            value={getEducation.tags}
-            onChange={onChangeHandler}
-            name="tags"
+            name="GPA"
             autoFocus
           />
         </form>
@@ -154,12 +163,11 @@ const EducationList = ({ education, setAddEducationButton }) => {
     return (
       <div className="flex cursor-pointer items-center justify-between border-b py-2">
         <div className="flex flex-row items-center space-x-4">
-          <span>{education.company}</span>
-          <span>{education.title}</span>
-          <span>{education.startDate}</span>
-          <span>{education.endDate}</span>
-          <span>{education.description}</span>
-          <span>{education.tags[0]}</span>
+          <span>{education.school}</span>
+          <span>{education.graduation}</span>
+          <span>{education.degree}</span>
+          <span>{education.GPA}</span>
+          <span>{education.major[0]}</span>
         </div>
         <div className="flex">
           <button

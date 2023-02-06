@@ -2,17 +2,25 @@ import { useState, useRef, useEffect } from "react";
 import Logo from "../assets/Logo";
 import Request from "../utils/API-routers";
 import { useDispatch } from "react-redux";
-import { logout } from "../store/features/userAuthSlice";
-import { useNavigate, Link } from "react-router-dom";
+import { logout } from "../store/features/editUserProfileSlice";
+import { logoutRecruiter } from "./../store/features/editRecruiterProfileSlice";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [getToggleProfile, setToggleProfile] = useState(false);
   const [getToggleMenu, setToggleMenu] = useState(false);
   const ref = useRef();
   const refMenu = useRef();
+
+  const name = pathname.split("/")[1].toLocaleLowerCase();
+  const path = name === "recruiter" ? "recruiters" : "users";
+  const route = name === "recruiter" ? "/recruiter/sign-in" : "/sign-in";
+  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_user";
+  const reduxData = name === "recruiter" ? logoutRecruiter() : logout();
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -43,10 +51,10 @@ const Navbar = () => {
   }, [getToggleMenu]);
 
   const Logout = () => {
-    dispatch(logout());
-    Request.logout("users");
-    Cookies.remove("logged_in_user");
-    navigate("/sign-in", { replace: true });
+    dispatch(reduxData);
+    Request.logout(path);
+    Cookies.remove(cook);
+    navigate(route, { replace: true });
   };
 
   return (
@@ -286,7 +294,7 @@ const Navbar = () => {
                       </div>
                       <div className="space-y-1 p-2">
                         <form onSubmit="return false;">
-                          {Cookies.get("logged_in_user") ? (
+                          {Cookies.get(cook) ? (
                             <button
                               onClick={Logout}
                               type="submit"

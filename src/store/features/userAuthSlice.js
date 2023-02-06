@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 const initialState = {
   isLoggedIn: Cookies.get("logged_in_user"),
-  token: null,
-  email: null,
-  fullName: null,
+  token: "",
+  email: "",
+  fullName: "",
+  _id: "",
 };
 
 export const userAuthSlice = createSlice({

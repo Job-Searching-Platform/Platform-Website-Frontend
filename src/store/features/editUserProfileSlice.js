@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import Cookies from "js-cookie";
 const initialState = {
-  user: null,
+  isLoggedIn: Cookies.get("logged_in_user"),
+  token: "",
   _id: null,
+  fullName: "",
+  email: "",
   country: "",
   city: "",
   phoneNumber: null,
@@ -16,7 +19,7 @@ const initialState = {
   skills: [],
   opentoRoles: [],
   primaryRole: "",
-  yearofExperience: "",
+  yearofExperience: null,
   resume: "",
   education: [],
   experience: [],
@@ -27,8 +30,10 @@ export const editUserProfileSlice = createSlice({
   initialState,
   reducers: {
     editUserProfile: (state, action) => {
+      state.fullName = action.payload.fullName;
+      state.email = action.payload.email;
       state._id = action.payload._id;
-      state.user = action.payload.user;
+      state.token = action.payload.token;
       state.country = action.payload.country;
       state.city = action.payload.city;
       state.phoneNumber = action.payload.phoneNumber;
@@ -38,8 +43,8 @@ export const editUserProfileSlice = createSlice({
       state.photo = action.payload.photo;
       state.achievement = action.payload.achievement;
       state.bio = action.payload.bio;
-      state.skills = [...state.skills, action.payload.skills];
-      state.opentoRoles = [action.payload.opentoRoles];
+      state.skills = action.payload.skills;
+      state.opentoRoles = action.payload.opentoRoles;
       state.primaryRole = action.payload.primaryRole;
       state.yearofExperience = action.payload.yearofExperience;
       state.resume = action.payload.resume;
@@ -73,6 +78,42 @@ export const editUserProfileSlice = createSlice({
         return edu._id !== action.payload._id;
       });
       state.education.push(action.payload);
+    },
+
+    signup: (state, action) => {
+      const { fullName, email, _id, token } = action.payload;
+      state.fullName = fullName;
+      state.email = email;
+      state._id = _id;
+      state.token = token;
+    },
+    login: (state, action) => {
+      state.isLoggedIn = Cookies.get("logged_in_user");
+      state.fullName = action.payload.fullName;
+      state.email = action.payload.email;
+      state._id = action.payload._id;
+      state.token = action.payload.token;
+      state.country = action.payload.country;
+      state.city = action.payload.city;
+      state.phoneNumber = action.payload.phoneNumber;
+      state.website = action.payload.website;
+      state.linkedin = action.payload.linkedin;
+      state.github = action.payload.github;
+      state.photo = action.payload.photo;
+      state.achievement = action.payload.achievement;
+      state.bio = action.payload.bio;
+      state.skills = action.payload.skills;
+      state.opentoRoles = action.payload.opentoRoles;
+      state.primaryRole = action.payload.primaryRole;
+      state.yearofExperience = action.payload.yearofExperience;
+      state.resume = action.payload.resume;
+    },
+    logout: (state) => {
+      state.isLoggedIn = null;
+      state.token = null;
+      state.fullName = null;
+      state.email = null;
+      state._id = null;
     },
 
     // editExperience: (state, action) => {
@@ -121,4 +162,7 @@ export const {
   editEducation,
   deleteEducation,
   addEducation,
+  login,
+  logout,
+  signup,
 } = editUserProfileSlice.actions;

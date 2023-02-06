@@ -1,26 +1,28 @@
 import Request from "../../utils/API-routers";
-import { signup } from "../../store/features/userAuthSlice";
+import { signup } from "../../store/features/editUserProfileSlice";
+import { signupRecruiter } from "../../store/features/editRecruiterProfileSlice";
 import ErrorBar from "../../components/ErrorBar";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const SignUp = () => {
   const [, setLoad] = useState(false);
   const [getError, setError] = useState("");
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  // const [getAnswer, setAnswer] = useState("");
   const [getSignup, setSignup] = useState({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    _id: "",
   });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const name = pathname.split("/")[1].toLocaleLowerCase();
+  const path = name === "recruiter" ? "recruiters" : "users";
+  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_user";
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -34,27 +36,34 @@ const SignUp = () => {
     event.preventDefault();
     setLoad(true);
     if (getSignup.fullName.split(" ").length !== 2) {
-      setError("Full Name should consist of First name and Last Name!");
+      setError("Full Name should consist of first name and last name!");
     }
-    Request.signup("users", getSignup)
+    Request.signup(path, getSignup)
       .then((res) => {
-        setSignup({ _id: res.data.user._id });
-
-        Cookies.set("logged_in_user", "yes", {
+        Cookies.set(cook, "yes", {
           secure: true,
-          expires: new Date(res.data.expires),
+          expires: new Date(res.data.user.password),
         });
         dispatch(
-          signup({
-            email: res.data.user.email,
-            fullName: res.data.user.fullName,
-            lastName: res.data.user.lastName,
-            _id: res.data.user._id,
-            // subscribtion: Cookies.get("subscribtion") || "NO",
-          })
+          name === "recruiter"
+            ? signupRecruiter({
+                email: res.data.user.email,
+                fullName: res.data.user.fullName,
+                token: res.data.token,
+                _id: res.data.user._id,
+              })
+            : signup({
+                email: res.data.user.email,
+                fullName: res.data.user.fullName,
+                token: res.data.token,
+                _id: res.data.user._id,
+              })
         );
 
-        res.data.status === "success" && navigate("/");
+        res.data.status === "success" &&
+          (name === "recruiter"
+            ? navigate("/recruiter/overview")
+            : navigate("/"));
 
         setLoad(false);
       })
