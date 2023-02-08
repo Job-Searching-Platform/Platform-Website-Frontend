@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const data = [
   {
     id: 0,
@@ -29,14 +31,14 @@ const ProfileAbout = () => {
         {data.map((x) => (
           <li key={x.id} className="mb-2 text-sm">
             <b>{x.title}: </b>
-            <a
-              href={x.link}
+            <Link
+              to={x.link}
               className="underline"
               rel="noreferrer"
               target="_blank"
             >
               {x.text}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

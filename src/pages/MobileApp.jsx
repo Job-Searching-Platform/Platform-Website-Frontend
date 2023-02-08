@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const MobileApp = () => {
   return (
     <section className="relative pt-20 pb-20 lg:pb-32">
@@ -31,18 +32,18 @@ const MobileApp = () => {
             aliquet orci.
           </p>
           <div className="mb-16 flex items-center justify-center">
-            <a className="mr-4" href="/">
+            <Link className="mr-4" to="/">
               <img
                 src=" https://shuffle.dev/zeus-assets/buttons/app-store.svg"
                 alt=""
               />
-            </a>
-            <a href="/">
+            </Link>
+            <Link to="/">
               <img
                 src=" https://shuffle.dev/zeus-assets/buttons/google-play.svg"
                 alt=""
               />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="-mx-4 -mb-8 flex flex-wrap items-center">

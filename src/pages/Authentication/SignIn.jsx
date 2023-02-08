@@ -3,7 +3,7 @@ import Facebook from "../../components/Facebook";
 
 import Request from "../../utils/API-routers";
 import { useDispatch } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { login } from "../../store/features/editUserProfileSlice";
 import { loginRecruiter } from "../../store/features/editRecruiterProfileSlice";
 import Cookies from "js-cookie";
@@ -114,9 +114,9 @@ const SignIn = () => {
                 <Google informParent={"informParent=sdfssdfg"} />
                 <Facebook informParent={"informParent=sdfsdf"} />
                 {/* <div className="px-3 text-center">
-                  <a
+                  <Link
                     className=" mb-4 p-4 flex justify-center items-center border rounded hover:bg-gray-50"
-                    href="/"
+                    to="/"
                   >
                     <img
                       className="mr-4"
@@ -129,10 +129,10 @@ const SignIn = () => {
                     >
                       Sign In with Facebook
                     </span>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="p-4 flex justify-center items-center border rounded hover:bg-gray-50"
-                    href="/"
+                    to="/"
                   >
                     <img
                       className="mr-4"
@@ -145,7 +145,7 @@ const SignIn = () => {
                     >
                       Sign In with Google
                     </span>
-                  </a>
+                  </Link>
                 </div> */}
                 {/* <div className="border-1 border-white flex items-center justify-center">
                   <h4>or</h4>
@@ -195,13 +195,13 @@ const SignIn = () => {
                       data-config-id="terms"
                     >
                       By signing up, you agree to our{" "}
-                      <a className="text-red-400 hover:underline" href="/">
+                      <Link className="text-red-400 hover:underline" to="/">
                         Terms, Data Policy
-                      </a>{" "}
+                      </Link>{" "}
                       and{" "}
-                      <a className="text-red-400 hover:underline" href="/">
+                      <Link className="text-red-400 hover:underline" to="/">
                         Cookies Policy
-                      </a>
+                      </Link>
                       .
                     </span>
                   </label>
@@ -216,13 +216,13 @@ const SignIn = () => {
                 </form>
 
                 <div className="flex items-center justify-center">
-                  <a
+                  <Link
                     className="text-sm text-green-600 hover:underline"
-                    href="/"
+                    to="/"
                     data-config-id="03_secondary-action"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

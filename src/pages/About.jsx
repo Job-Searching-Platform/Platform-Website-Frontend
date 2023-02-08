@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -70,9 +70,9 @@ const About = () => {
                   aliquet orci.
                 </p>
                 <div>
-                  <a
+                  <Link
                     className="mr-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-50"
-                    href="/"
+                    to="/"
                   >
                     <svg
                       width="7"
@@ -88,10 +88,10 @@ const About = () => {
                         fill="#758A99"
                       ></path>
                     </svg>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="mr-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-50"
-                    href="/"
+                    to="/"
                   >
                     <svg
                       width="13"
@@ -107,10 +107,10 @@ const About = () => {
                         fill="#758A99"
                       ></path>
                     </svg>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="mr-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-50"
-                    href="/"
+                    to="/"
                   >
                     <svg
                       width="14"
@@ -126,10 +126,10 @@ const About = () => {
                         fill="#758A99"
                       ></path>
                     </svg>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-50"
-                    href="/"
+                    to="/"
                   >
                     <svg
                       width="12"
@@ -143,7 +143,7 @@ const About = () => {
                         fill="#758A99"
                       ></path>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="relative w-full px-4 lg:w-1/2">

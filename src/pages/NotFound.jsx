@@ -1,11 +1,12 @@
 import Error404 from "../assets/Error404";
+import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       <div className="w-1/6 pl-10">
-        <a
-          href="/"
-          className="border-1 border-gray-700 w-6 h-6 text-red-500"
+        <Link
+          to="/"
+          className="border-1 h-6 w-6 border-gray-700 text-red-500"
           rel="noopener noreferrer"
         >
           <svg
@@ -22,7 +23,7 @@ const NotFound = () => {
               d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
-        </a>
+        </Link>
       </div>
       <div className="w-5/6">
         <Error404 />

@@ -72,8 +72,8 @@ const Navbar = () => {
             {/* <!-- Left Section --> */}
             <div className="flex items-center">
               {/* <!-- Logo --> */}
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="group inline-flex items-center space-x-2 text-lg font-bold tracking-wide text-gray-700 hover:text-blue-600 active:text-gray-700"
               >
                 <Logo
@@ -83,7 +83,7 @@ const Navbar = () => {
                     "opacity-90 text-blue-600 transform transition group-hover:scale-110 hi-solid hi-cube-transparent inline-block"
                   }
                 />
-              </a>
+              </Link>
               {/* <!-- END Logo --> */}
             </div>
             {/* <!-- END Left Section --> */}
@@ -92,8 +92,8 @@ const Navbar = () => {
             <div className="flex items-center space-x-1 lg:space-x-5">
               {/* <!-- Desktop Navigation --> */}
               <nav className="hidden lg:flex lg:items-center lg:space-x-2">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-blue-50 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-500"
                 >
                   <svg
@@ -105,9 +105,9 @@ const Navbar = () => {
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                   </svg>
                   <span>For job seekers</span>
-                </a>
-                <a
-                  href="/recruiter/overview"
+                </Link>
+                <Link
+                  to="/recruiter/overview"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
@@ -123,9 +123,9 @@ const Navbar = () => {
                     ></path>
                   </svg>
                   <span>For employers</span>
-                </a>
-                <a
-                  href="/"
+                </Link>
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
@@ -142,9 +142,9 @@ const Navbar = () => {
                     <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                   </svg>
                   <span>Resumes</span>
-                </a>
-                <a
-                  href="/"
+                </Link>
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
@@ -160,7 +160,7 @@ const Navbar = () => {
                     ></path>
                   </svg>
                   <span>Settings</span>
-                </a>
+                </Link>
               </nav>
               {/* <!-- END Desktop Navigation --> */}
 
@@ -233,19 +233,19 @@ const Navbar = () => {
                           className="inline-block h-10 w-10 flex-none rounded-full"
                         />
                         <div className="grow text-sm">
-                          <a
-                            href="/"
+                          <Link
+                            to="/"
                             className="font-semibold text-gray-600 hover:text-gray-500"
                           >
                             John Doe
-                          </a>
+                          </Link>
                           <p className="text-gray-500">john.doe@example.com</p>
                         </div>
                       </div>
                       <div className="space-y-1 p-2">
-                        <a
+                        <Link
                           role="menuitem"
-                          href="/"
+                          to="/"
                           className="flex items-center justify-between space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 focus:outline-none"
                         >
                           <div className="flex flex-none items-center space-x-2">
@@ -266,10 +266,10 @@ const Navbar = () => {
                           <div className="ml-2 inline-flex rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-700">
                             3
                           </div>
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           role="menuitem"
-                          href="/"
+                          to="/"
                           className="flex items-center justify-between space-x-2 rounded py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:text-gray-700 focus:outline-none"
                         >
                           <div className="flex flex-none items-center space-x-2">
@@ -290,7 +290,7 @@ const Navbar = () => {
                           <div className="ml-2 inline-flex rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-700">
                             5
                           </div>
-                        </a>
+                        </Link>
                       </div>
                       <div className="space-y-1 p-2">
                         <form onSubmit="return false;">
@@ -381,8 +381,8 @@ const Navbar = () => {
           <div className="lg:hidden">
             {getToggleMenu && (
               <nav className="flex flex-col space-y-2 border-t py-4">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-blue-50 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-500"
                 >
                   <svg
@@ -394,9 +394,9 @@ const Navbar = () => {
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                   </svg>
                   <span>For job seekers</span>
-                </a>
-                <a
-                  href="/"
+                </Link>
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
@@ -412,9 +412,9 @@ const Navbar = () => {
                     ></path>
                   </svg>
                   <span>For employers</span>
-                </a>
-                <a
-                  href="/"
+                </Link>
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
@@ -431,9 +431,9 @@ const Navbar = () => {
                     <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                   </svg>
                   <span>Resumes</span>
-                </a>
-                <a
-                  href="/"
+                </Link>
+                <Link
+                  to="/"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg
@@ -449,7 +449,7 @@ const Navbar = () => {
                     ></path>
                   </svg>
                   <span>Settings</span>
-                </a>
+                </Link>
               </nav>
             )}
           </div>

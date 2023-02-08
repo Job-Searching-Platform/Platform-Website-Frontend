@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SearchModal from "../layouts/SearchModal";
 
 const Home = ({ recruiter = false }) => {
@@ -8,27 +9,27 @@ const Home = ({ recruiter = false }) => {
     return (
       <>
         <div>
-          <a
+          <Link
             className="inline-block w-full rounded-l-xl rounded-t-xl bg-white py-2 px-6 font-semibold leading-loose transition duration-200 hover:bg-gray-50 lg:w-auto"
-            href="/recruiter/profile"
+            to="/recruiter/profile"
             data-config-id="secondary-action-hero"
           >
             Profile
-          </a>
-          <a
+          </Link>
+          <Link
             className="inline-block w-full rounded-l-xl rounded-t-xl bg-white py-2 px-6 font-semibold leading-loose transition duration-200 hover:bg-gray-50 lg:w-auto"
-            href="/recruiter/company"
+            to="/recruiter/company"
             data-config-id="secondary-action-hero"
           >
             Company
-          </a>
-          <a
+          </Link>
+          <Link
             className="inline-block w-full rounded-l-xl rounded-t-xl bg-white py-2 px-6 font-semibold leading-loose transition duration-200 hover:bg-gray-50 lg:w-auto"
-            href="/recruiter/jobs"
+            to="/recruiter/jobs"
             data-config-id="secondary-action-hero"
           >
             Jobs
-          </a>
+          </Link>
         </div>
       </>
     );
@@ -62,27 +63,27 @@ const Home = ({ recruiter = false }) => {
                       Pellentesque efficitur nisl sodales egestas lobortis.
                     </p>
                     <div>
-                      <a
+                      <Link
                         className="mb-3 inline-block w-full rounded-l-xl rounded-t-xl bg-green-600 py-2 px-6 font-semibold leading-loose text-white transition duration-200 hover:bg-green-700 lg:mb-0 lg:mr-3 lg:w-auto"
-                        href="/sign-in"
+                        to="/sign-in"
                         data-config-id="primary-action-hero"
                       >
                         Sign In
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="inline-block w-full rounded-l-xl rounded-t-xl bg-white py-2 px-6 font-semibold leading-loose transition duration-200 hover:bg-gray-50 lg:w-auto"
-                        href="/sign-up"
+                        to="/sign-up"
                         data-config-id="secondary-action-hero"
                       >
                         Sign Up
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="inline-block w-full rounded-l-xl rounded-t-xl bg-white py-2 px-6 font-semibold leading-loose transition duration-200 hover:bg-gray-50 lg:w-auto"
-                        href="/profile"
+                        to="/profile"
                         data-config-id="secondary-action-hero"
                       >
                         Profile
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

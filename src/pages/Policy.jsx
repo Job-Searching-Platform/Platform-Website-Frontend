@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Policy = () => {
   return (
@@ -61,13 +61,13 @@ const Policy = () => {
             <p className="mb-8 text-slate-600">
               All purchases made through the Website are processed by a third
               party payment processor, Paddle (
-              <a href="https://paddle.com">paddle.com</a>). Paddle may ask you
-              for personal and/or non-personal information, such as your name,
-              address, email address, credit card information, or other Personal
-              Information. Paddle has a privacy policy (
-              <a href="https://paddle.com/legal-buyers/">
+              <Link to="https://paddle.com">paddle.com</Link>). Paddle may ask
+              you for personal and/or non-personal information, such as your
+              name, address, email address, credit card information, or other
+              Personal Information. Paddle has a privacy policy (
+              <Link to="https://paddle.com/legal-buyers/">
                 paddle.com/legal-buyers/
-              </a>
+              </Link>
               ) that describes their collection and use of personal information.
               Tailwind does not control Paddle or its collection or use of
               information. Any questions or concerns about Paddle’s practices
@@ -209,7 +209,7 @@ const Policy = () => {
             <p className="mb-8 text-slate-600">
               Any requests to exercise User rights can be directed to the Owner
               by email at{" "}
-              <a href="mailto:support@tailwindui.com">support@tailwindui.com</a>
+              <Link to="mailto:support@tailwindui.com">support@tailwindui.com</Link>
               . These requests can be exercised free of charge and will be
               addressed by the Owner as early as possible and always within one
               month.
@@ -270,9 +270,9 @@ const Policy = () => {
               Personal Information or non-personal information collected by
               Paddle, are under the control of Paddle. We encourage purchasers
               to read Paddle’s Privacy Policy (
-              <a href="https://paddle.com/legal-buyers/">
+              <Link to="https://paddle.com/legal-buyers/">
                 paddle.com/legal-buyers/
-              </a>
+              </Link>
               ).
             </p>
             <h2 className="mb-2 text-xl font-bold">Information security</h2>
@@ -342,12 +342,12 @@ const Policy = () => {
             <p className="mb-8 text-slate-600">
               If you have any questions about this Policy, please contact us by
               email at{" "}
-              <a
+              <Link
                 className="font-bold text-blue-500"
-                href="mailto:support@tailwindui.com"
+                to="mailto:support@tailwindui.com"
               >
                 support@tailwindui.com
-              </a>
+              </Link>
               .
             </p>
           </div>
