@@ -1,27 +1,51 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import axios from "axios";
+import Cookies from "js-cookie";
+// import { gapi } from "gapi-script";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Request from "../utils/API-routers";
 
-const Facebook = ({ informParent = (f) => f }) => {
+const Facebook = () => {
+  const [, setError] = useState("");
+  const [, setLoad] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const name = location.pathname.split("/")[1].toLocaleLowerCase();
+  const path = name === "recruiter" ? "recruiters" : "users";
+  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_user";
+
   const responseFacebook = (response) => {
-    axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_API}/facebook-login`,
-      data: { userID: response.userID, accessToken: response.accessToken },
+    Request.facebookLogin(path, {
+      userID: response.userID,
+      accessToken: response.accessToken,
     })
-      .then((response) => {
-        // console.log("FACEBOOK SIGNIN SUCCESS", response);
-        // inform parent component
-        informParent(response);
+      .then((res) => {
+        console.log(res);
+        Cookies.set(cook, "yes", {
+          secure: true,
+          expires: new Date(res.data.user.password),
+        });
+
+        res.data.status === "success" &&
+          (location.state?.from
+            ? navigate(location.state.from)
+            : name === "recruiter"
+            ? navigate("/recruiter/overview")
+            : navigate("/"));
+        setLoad(false);
       })
       .catch((error) => {
-        // console.log("FACEBOOK SIGNIN ERROR", error.response);
+        setError(error.response?.message);
+        console.log(error);
+        setLoad(false);
       });
   };
   return (
     <div className="">
       <FacebookLogin
-        appId={`${process.env.REACT_APP_FACEBOOK_APP_ID}`}
+        appId={`${process.env.REACT_APP_FACEBOOK_CLIENT_ID}`}
         autoLoad={false}
         callback={responseFacebook}
         render={(renderProps) => (

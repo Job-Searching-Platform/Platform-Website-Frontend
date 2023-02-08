@@ -17,11 +17,11 @@ class Request {
   resetPassword(path) {
     return http.get(`/api/v1/${path}/resetPassword/:token`);
   }
-  googleLogin(path) {
-    return http.get(`/api/v1/${path}/google-login`);
+  googleLogin(path, data) {
+    return http.post(`/api/v1/${path}/google-login`, data);
   }
-  facebookLogin(path) {
-    return http.get(`/api/v1/${path}/facebook-login`);
+  facebookLogin(path, data) {
+    return http.post(`/api/v1/${path}/facebook-login`, data);
   }
 
   //     ######  Education, Experience, Profile   ########
@@ -53,6 +53,10 @@ class Request {
   }
   editRecruiterJobCompany(route, id, data) {
     return http.patch(`/api/v1/${route}/detail/${id}`, data);
+  }
+
+  uploadAWS(route, dataType) {
+    return http.get(`/api/v1/upload/${route}/${dataType}`);
   }
 }
 
