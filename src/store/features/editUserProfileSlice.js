@@ -23,6 +23,7 @@ const initialState = {
   resume: "",
   education: [],
   experience: [],
+  applications: [],
 };
 
 export const editUserProfileSlice = createSlice({
@@ -78,6 +79,10 @@ export const editUserProfileSlice = createSlice({
         return edu._id !== action.payload._id;
       });
       state.education.push(action.payload);
+    },
+
+    addApplications: (state, action) => {
+      state.applications = action.payload;
     },
 
     signup: (state, action) => {
@@ -162,6 +167,7 @@ export const {
   editEducation,
   deleteEducation,
   addEducation,
+  addApplications,
   login,
   logout,
   signup,

@@ -55,6 +55,20 @@ class Request {
     return http.patch(`/api/v1/${route}/detail/${id}`, data);
   }
 
+  // #############################################
+  //             Apply Job & Applicants for Job
+  // ##############################################
+  createApplyJob(id) {
+    return http.post(`/api/v1/users/${id}/apply`);
+  }
+  getAppliedJobs(id) {
+    return http.get(`/api/v1/users/${id}/applied-jobs`);
+  }
+
+  getApplicants(id) {
+    return http.get(`/api/v1/jobs/${id}/applicants`);
+  }
+
   uploadAWS(route, dataType) {
     return http.get(`/api/v1/upload/${route}/${dataType}`);
   }

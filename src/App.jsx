@@ -33,6 +33,7 @@ import CompanyOverview from "./pages/Recruiter/Company/CompanyOverview";
 import CompanyCulture from "./pages/Recruiter/Company/CompanyCulture";
 import CompanyJobs from "./pages/Recruiter/Company/CompanyJobs";
 import CompanyGallery from "./pages/Recruiter/Company/CompanyGallery";
+import Applications from "./pages/Application/Applications";
 
 const App = () => {
   return (
@@ -51,6 +52,7 @@ const App = () => {
 
         {/* #########  USER PROFILE  ######### */}
         <Route exact element={<PrivateRouter />}>
+          <Route path="applications" element={<Applications />} />
           <Route path="profile" element={<Profile />}>
             <Route path="about" element={<ProfileAbout />} />
             <Route path="social_profile" element={<ProfileSocial />} />

@@ -84,6 +84,13 @@ const Home = ({ recruiter = false }) => {
                       >
                         Profile
                       </Link>
+                      <Link
+                        className="inline-block w-full rounded-l-xl rounded-t-xl bg-white py-2 px-6 font-semibold leading-loose transition duration-200 hover:bg-gray-50 lg:w-auto"
+                        to="/applications"
+                        data-config-id="secondary-action-hero"
+                      >
+                        Applied
+                      </Link>
                     </div>
                   </div>
                 </div>
