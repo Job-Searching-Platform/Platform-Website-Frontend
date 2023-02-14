@@ -42,8 +42,8 @@ class Request {
   createRecruiterJobCompany(route, data) {
     return http.post(`/api/v1/${route}/create-${route}`, data);
   }
-  getRecruiterJobCompany(route, id) {
-    return http.get(`/api/v1/recruiters/${route}/${id}`);
+  getRecruiterJobCompany(route, data) {
+    return http.post(`/api/v1/${route}/all`, data);
   }
   getJobCompany(route, id) {
     return http.get(`/api/v1/${route}/detail/${id}`);
@@ -66,7 +66,7 @@ class Request {
   }
 
   getApplicants(id) {
-    return http.get(`/api/v1/jobs/${id}/applicants`);
+    return http.get(`/api/v1/job/${id}/applicants`);
   }
 
   uploadAWS(route, dataType) {

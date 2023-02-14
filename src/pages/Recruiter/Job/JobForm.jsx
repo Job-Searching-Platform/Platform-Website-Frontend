@@ -22,19 +22,21 @@ const JobForm = () => {
 
   const todoAddHandler = (e) => {
     e.preventDefault();
-    Request.createRecruiterJobCompany(getJob)
+    Request.createRecruiterJobCompany("jobs", getJob)
       .then((res) => {
         dispatch(
-          addJob({
-            profile: res.data.doc.profile,
-            company: res.data.doc.company,
-            description: res.data.doc.description,
-            title: res.data.doc.title,
-            startDate: res.data.doc.startDate,
-            endDate: res.data.doc.endDate,
-            tags: res.data.doc.tags,
-            _id: res.data.doc._id,
-          })
+          addJob(
+          //   {
+          //   profile: res.data.doc.profile,
+          //   company: res.data.doc.company,
+          //   description: res.data.doc.description,
+          //   title: res.data.doc.title,
+          //   startDate: res.data.doc.startDate,
+          //   endDate: res.data.doc.endDate,
+          //   tags: res.data.doc.tags,
+          //   _id: res.data.doc._id,
+          // }
+          )
         );
       })
       .catch((error) => {

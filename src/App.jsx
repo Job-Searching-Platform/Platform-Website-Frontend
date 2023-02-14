@@ -34,6 +34,15 @@ import CompanyCulture from "./pages/Recruiter/Company/CompanyCulture";
 import CompanyJobs from "./pages/Recruiter/Company/CompanyJobs";
 import CompanyGallery from "./pages/Recruiter/Company/CompanyGallery";
 import Applications from "./pages/Application/Applications";
+import CompanyForm from "./pages/Recruiter/Company/CompanyForm";
+import JobSidebar from "./pages/Recruiter/Job/JobSidebar";
+import JobApplicants from "./pages/Recruiter/Job/JobApplicants";
+import JobMeeting from "./pages/Recruiter/Job/JobMeeting";
+import JobRecording from "./pages/Recruiter/Job/JobRecording";
+import JobTrello from "./pages/Recruiter/Job/JobTrello";
+import JobPreview from "./pages/Recruiter/Job/JobPreview";
+import Jobs from "./pages/Recruiter/Job/Jobs";
+import JobChat from "./pages/Recruiter/Job/JobChat";
 
 const App = () => {
   return (
@@ -86,6 +95,7 @@ const App = () => {
         {/* #######  RECRUITER COMPANY  ####### */}
         <Route exact element={<PrivateRouter />}>
           <Route path="recruiter/company" element={<Company />}>
+            <Route path="create" element={<CompanyForm />} />
             <Route path=":id" element={<TopBar />}>
               <Route path="" element={<EmptySelect />} />
               <Route path="overview" element={<CompanyOverview />} />
@@ -99,8 +109,19 @@ const App = () => {
 
         {/* #######  RECRUITER AUTHENTICATION  ####### */}
         <Route exact element={<PrivateRouter />}>
-          <Route path="recruiter/jobs" element={<JobHome />} />
-          <Route path="recruiter/jobs/create_job" element={<JobForm />} />
+          <Route path="recruiter/jobs" element={<Jobs />}>
+            <Route index element={<JobHome />} />
+            <Route path="create-job" element={<JobForm />} />
+            <Route path=":id" element={<Jobs />}>
+              <Route index element={<JobSidebar />} />
+              <Route path="details" element={<JobPreview />} />
+              <Route path="applicants" element={<JobApplicants />} />
+              <Route path="chat" element={<JobChat />} />
+              <Route path="meeting" element={<JobMeeting />} />
+              <Route path="recording" element={<JobRecording />} />
+              <Route path="trello" element={<JobTrello />} />
+            </Route>
+          </Route>
         </Route>
 
         {/* #######  AUTHENTICATION  ####### */}
