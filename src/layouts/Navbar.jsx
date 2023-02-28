@@ -19,7 +19,7 @@ const Navbar = () => {
   const name = pathname.split("/")[1].toLocaleLowerCase();
   const path = name === "recruiter" ? "recruiters" : "users";
   const route = name === "recruiter" ? "/recruiter/sign-in" : "/sign-in";
-  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_user";
+  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_candidate";
   const reduxData = name === "recruiter" ? logoutRecruiter() : logout();
 
   useEffect(() => {

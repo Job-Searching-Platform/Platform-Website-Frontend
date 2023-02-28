@@ -9,7 +9,7 @@ const PrivateRouter = () => {
   const logged_in =
     name === "recruiter"
       ? Cookies.get("logged_in_recruiter")
-      : Cookies.get("logged_in_user");
+      : Cookies.get("logged_in_candidate");
   return (
     <>
       {logged_in ? (

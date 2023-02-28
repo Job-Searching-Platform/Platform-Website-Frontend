@@ -16,8 +16,9 @@ const Google = () => {
   const dispatch = useDispatch();
 
   const name = location.pathname.split("/")[1].toLocaleLowerCase();
-  const path = name === "recruiter" ? "recruiters" : "users";
-  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_user";
+  const path = name === "recruiter" ? "recruiters" : "candidates";
+  const cook =
+    name === "recruiter" ? "logged_in_recruiter" : "logged_in_candidate";
   useEffect(() => {
     const start = () => {
       gapi.client.init({

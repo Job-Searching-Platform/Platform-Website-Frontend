@@ -12,11 +12,7 @@ export const SignOut = () => {
     navigate("/signin", { replace: true });
   });
 
-  Cookies.remove("logged_in_user");
+  Cookies.remove("logged_in_candidate");
 
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 };

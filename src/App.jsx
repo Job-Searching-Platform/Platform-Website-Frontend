@@ -42,7 +42,9 @@ import JobRecording from "./pages/Recruiter/Job/JobRecording";
 import JobTrello from "./pages/Recruiter/Job/JobTrello";
 import JobPreview from "./pages/Recruiter/Job/JobPreview";
 import Jobs from "./pages/Recruiter/Job/Jobs";
-import JobChat from "./pages/Recruiter/Job/JobChat";
+// import JobChat from "./pages/Recruiter/Job/JobChat";
+// import RecruiterChatList from "./pages/Recruiter/Chat/RecruiterChatList";
+// import RecruiterCandidateChat from "./pages/Recruiter/Chat/RecruiterCandidateChat";
 
 const App = () => {
   return (
@@ -62,6 +64,8 @@ const App = () => {
         {/* #########  USER PROFILE  ######### */}
         <Route exact element={<PrivateRouter />}>
           <Route path="applications" element={<Applications />} />
+          {/* <Route exact path="/chats" component={CandidateChatList} /> */}
+          {/* <Route exact path="/chats/:id" component={CandidateChat} /> */}
           <Route path="profile" element={<Profile />}>
             <Route path="about" element={<ProfileAbout />} />
             <Route path="social_profile" element={<ProfileSocial />} />
@@ -74,6 +78,8 @@ const App = () => {
             <Route path="" element={<EmptySelect />} />
           </Route>
         </Route>
+
+
 
         {/* ################    RECRUITER    ################## */}
 
@@ -116,7 +122,11 @@ const App = () => {
               <Route index element={<JobSidebar />} />
               <Route path="details" element={<JobPreview />} />
               <Route path="applicants" element={<JobApplicants />} />
-              <Route path="chat" element={<JobChat />} />
+              {/* <Route path="chat" element={<RecruiterChatList />}> */}
+                {/* <Route index element={<EmptySelect />} /> */}
+                {/* <Route path=":chatID" element={<RecruiterCandidateChat />} /> */}
+              {/* </Route> */}
+              {/* <Route path="chat" element={<JobChat />} />      */}
               <Route path="meeting" element={<JobMeeting />} />
               <Route path="recording" element={<JobRecording />} />
               <Route path="trello" element={<JobTrello />} />

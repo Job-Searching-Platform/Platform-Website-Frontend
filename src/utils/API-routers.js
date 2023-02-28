@@ -59,10 +59,10 @@ class Request {
   //             Apply Job & Applicants for Job
   // ##############################################
   createApplyJob(id) {
-    return http.post(`/api/v1/users/${id}/apply`);
+    return http.post(`/api/v1/candidates/${id}/apply`);
   }
   getAppliedJobs(id) {
-    return http.get(`/api/v1/users/${id}/applied-jobs`);
+    return http.get(`/api/v1/candidates/${id}/applied-jobs`);
   }
 
   getApplicants(id) {

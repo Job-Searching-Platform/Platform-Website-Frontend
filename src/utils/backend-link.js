@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  // baseURL: "https://fyp-backend-api.herokuapp.com/",
-  baseURL: "http://localhost:8000/",
+  baseURL: "http://localhost:8000/", //process.env.REACT_APP_SERVER_PORT,
   headers: {
     "Content-type": "application/json",
   },

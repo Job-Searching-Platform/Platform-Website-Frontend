@@ -21,8 +21,9 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const name = pathname.split("/")[1].toLocaleLowerCase();
-  const path = name === "recruiter" ? "recruiters" : "users";
-  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_user";
+  const path = name === "recruiter" ? "recruiters" : "candidates";
+  const cook =
+    name === "recruiter" ? "logged_in_recruiter" : "logged_in_candidate";
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
