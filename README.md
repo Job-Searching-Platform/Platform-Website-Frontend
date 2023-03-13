@@ -92,7 +92,7 @@ _Below You can find a detailed procedure you need to follow to get the programmi
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:Job-Searching-Platform/Platform-Backend.git
+   git clone git@github.com:Job-Searching-Platform/Platform-Website-Frontend.git
    ```
 2. Install NPM packages
    ```sh
@@ -100,7 +100,7 @@ _Below You can find a detailed procedure you need to follow to get the programmi
    ```
 3. Start the development server
    ```sh
-    npm run dev
+    npm start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
