@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import SearchModal from "../layouts/SearchModal";
+import { SearchModal } from "../../components/SearchBar";
 
 const Home = ({ recruiter = false }) => {
   const [getToggleFilter, setToggleFilter] = useState(false);
@@ -51,7 +51,7 @@ const Home = ({ recruiter = false }) => {
             <li class="hover:bg-gray-100">
               <a
                 href="."
-                class="flex flex h-16 w-full items-center justify-center px-6
+                class=" flex h-16 w-full items-center justify-center px-6
 					focus:text-orange-500"
               >
                 <svg

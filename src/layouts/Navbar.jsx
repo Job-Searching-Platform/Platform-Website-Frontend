@@ -19,7 +19,8 @@ const Navbar = () => {
   const name = pathname.split("/")[1].toLocaleLowerCase();
   const path = name === "recruiter" ? "recruiters" : "users";
   const route = name === "recruiter" ? "/recruiter/sign-in" : "/sign-in";
-  const cook = name === "recruiter" ? "logged_in_recruiter" : "logged_in_candidate";
+  const cook =
+    name === "recruiter" ? "logged_in_recruiter" : "logged_in_candidate";
   const reduxData = name === "recruiter" ? logoutRecruiter() : logout();
 
   useEffect(() => {
@@ -107,7 +108,7 @@ const Navbar = () => {
                   <span>For job seekers</span>
                 </Link>
                 <Link
-                  to="/recruiter/overview"
+                  to="/recruiter"
                   className="flex items-center space-x-2 rounded border border-transparent px-3 py-2 text-sm font-medium text-gray-600 hover:border-blue-50 hover:bg-blue-50 hover:text-blue-500 active:border-blue-100 active:bg-blue-100"
                 >
                   <svg

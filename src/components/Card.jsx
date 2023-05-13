@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const JobCard = ({ jobElement }) => {
+export const JobCard = ({ jobElement }) => {
   const navigate = useNavigate();
   const handleNavigate = (event) => {
     event.preventDefault();
@@ -57,4 +57,4 @@ const JobCard = ({ jobElement }) => {
   );
 };
 
-export default JobCard;
+

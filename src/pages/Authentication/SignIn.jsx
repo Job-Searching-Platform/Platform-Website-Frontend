@@ -89,10 +89,13 @@ const SignIn = () => {
             : name === "recruiter"
             ? navigate("/recruiter/overview")
             : navigate("/"));
-        setLoad(false);
+        // setLoad(false);  
       })
       .catch((error) => {
         setError(error.response?.message);
+        setLoad(false);
+      })
+      .finally((e) => {
         setLoad(false);
       });
   };

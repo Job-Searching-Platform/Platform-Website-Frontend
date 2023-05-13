@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
-import Request from "./../../../utils/API-routers";
+import Request from "../../../utils/API-routers";
 import { editInitialJob } from "../../../store/features/editJobSlice";
-import JobCard from "../../../components/JobCard";
+import { JobCard } from "../../../components/Card";
 // import JobPreview from "./JobPreview";
 
-const JobHome = () => {
+const JobList = () => {
   const dispatch = useDispatch();
   const job_initials = useSelector((state) => state.Job.job_initials);
   const _idRecruiter = useSelector((state) => state.RecruiterProfile._id);
@@ -493,4 +493,4 @@ const JobHome = () => {
   );
 };
 
-export default JobHome;
+export default JobList;
